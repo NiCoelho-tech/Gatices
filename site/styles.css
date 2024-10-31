@@ -115,7 +115,7 @@ header ul > a {
   background-size: contain;
   color: #4F4F4F;
   padding: 30px 20px;
-  width: 180px;
+  width: 160px;
   text-align: center;
   font-family: 'RetroGaming', sans-serif;
 }
@@ -137,6 +137,27 @@ header ul > a > div {
 header > img {
   width: 100px;
   height: 100px;
+}
+
+.links-login-cadastro {
+  display: flex;
+  gap: 15px;
+  margin: 30px 0 0 20px;
+  font-size: 17px;
+}
+
+.links-login-cadastro span {
+  color: #F0F0F0;
+}
+
+.links-login-cadastro p {
+  transition: .3s;
+}
+
+.links-login-cadastro p:hover {
+  color: #FFB3C1;
+  transition: .3s;
+  transform: scale(1.03);
 }
 
 .inicio {
@@ -169,8 +190,8 @@ header > img {
   position: absolute;
   width: 170px;
   height: 170px;
-  left: 7%;
-  top: 10%;
+  left: 10%;
+  top: 15%;
   animation: float 4s ease-in-out infinite;
 }
 
@@ -280,7 +301,7 @@ header > img {
 }
 
 .conteudo-curiosidades li {
-  margin-top: 7px;
+  margin-top: 30px;
   font-size: 22px;
   font-weight: 600;
 }
