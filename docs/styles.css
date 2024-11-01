@@ -442,7 +442,6 @@ header > img {
   background-color: #f495a9;
   color: #F0F0F0;
   transition: .3s;
-  cursor: pointer;
 }
 
 .pixel-cat {
@@ -486,7 +485,6 @@ footer {
 }
 
 .footer-nav li {
-  cursor: pointer;
   border-bottom: 1px solid #F0F0F0;
   transition: .3s;
 }
@@ -512,7 +510,6 @@ footer {
 .social i:hover {
   transform: scale(1.2);
   color: #f495a9;
-  cursor: pointer;
   transition: .3s;
 }
 
