@@ -148,7 +148,20 @@
         <div class="conteudo-crie-seu-gato">
           <h1>Crie o seu gato virtual!</h1>
         </div>
-        <div class="card-container"></div>
+        <div class="card-container">
+          <div class="selecao" id="div_selecao">
+            <h1>Selecione o tipo de gato</h1>
+            <div class="selecao-gatos">
+              <img src="./assets/gatinhos-selecao/rosa.gif" onclick="esconderSelecao()" style="height: 90px; width: 90px; transform: translateY(40px); margin-right: 15px;" alt="">
+              <img src="./assets/gatinhos-selecao/calico2.gif" onclick="esconderSelecao()" style="height: 80px; width: 70px; transform: translateY(35px); margin-right: 15px;" alt="">
+              <img src="./assets/gatinhos-selecao/cinza.gif" onclick="esconderSelecao()" alt="">
+              <img src="./assets/gatinhos-selecao/branco.gif" onclick="esconderSelecao()" alt="">
+              <img src="./assets/gatinhos-selecao/laranja.gif" onclick="esconderSelecao()" alt="">
+              <img src="./assets/gatinhos-selecao/roxo.gif" onclick="esconderSelecao()" alt="">
+              <img src="./assets/gatinhos-selecao/preto.gif" onclick="esconderSelecao()" alt="">
+            </div>
+          </div>
+        </div>
       </section>
       <section class="fale-conosco" id="fale-conosco">
         <div class="conteudo-fale-conosco">
@@ -223,6 +236,12 @@
       function sair() {
         sessionStorage.clear();
         window.location.reload();
+      }
+
+      function esconderSelecao() {
+        const selecao = div_selecao;
+
+        selecao.style.display = "none";
       }
     </script>
   </body>

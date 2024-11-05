@@ -24,6 +24,7 @@
   padding: 0;
   box-sizing: border-box;
   font-style: normal;
+  cursor: default;
 }
 
 html {
@@ -368,6 +369,36 @@ header > img {
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 40px;
+}
+
+.selecao {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #F0F0F0;
+}
+
+.selecao h1 {
+  margin-bottom: 40px !important;
+}
+
+.selecao-gatos {
+  display: flex;
+  gap: 20px;
+}
+
+.selecao-gatos img {
+  width: 100px;
+  height: 150px;
+  mix-blend-mode: multiply;
+}
+
+.selecao-gatos img:hover {
+  mix-blend-mode: normal;
+  cursor: pointer;
+  filter: brightness(1.2);
 }
 
 .fale-conosco {
