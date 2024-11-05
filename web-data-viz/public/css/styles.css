@@ -38,6 +38,7 @@ a {
 
 a:hover {
   text-decoration: none !important;
+  cursor: pointer;
 }
 
 ul {
@@ -140,6 +141,10 @@ header ul > a:active {
   background-size: contain;
 }
 
+header ul > a > div > li:hover {
+  cursor: pointer;
+}
+
 header ul > a > div {
   display: flex;
   flex-direction: column;
@@ -147,7 +152,6 @@ header ul > a > div {
   width: 120px;
   transform: translateY(-20%);
 }
-
 
 header > img {
   width: 100px;
@@ -173,6 +177,7 @@ header > img {
   color: #FFB3C1;
   transition: .3s;
   transform: scale(1.03);
+  cursor: pointer;
 }
 
 .saudacao {
@@ -189,6 +194,13 @@ header > img {
 
 .saudacao i {
   font-size: 20px;
+  transition: .3s;
+}
+
+.saudacao i:hover {
+  color: #f495a9;
+  cursor: pointer;
+  transition: .3s;
 }
 
 .inicio {
@@ -488,6 +500,7 @@ header > img {
 .campos button:hover {
   background-color: #f495a9;
   color: #F0F0F0;
+  cursor: pointer;
   transition: .3s;
 }
 
@@ -538,6 +551,7 @@ footer {
 
 .footer-nav li:hover {
   color: #f495a9;
+  cursor: pointer;
   transition: .3s;
 }
 
@@ -557,6 +571,7 @@ footer {
 .social i:hover {
   transform: scale(1.2);
   color: #f495a9;
+  cursor: pointer;
   transition: .3s;
 }
 
