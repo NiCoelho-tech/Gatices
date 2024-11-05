@@ -404,11 +404,9 @@ header > img {
 .selecao-gatos img {
   width: 100px;
   height: 150px;
-  mix-blend-mode: multiply;
 }
 
 .selecao-gatos img:hover {
-  mix-blend-mode: normal;
   cursor: pointer;
   filter: brightness(1.2);
 }
