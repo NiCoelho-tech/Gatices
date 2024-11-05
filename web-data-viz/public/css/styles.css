@@ -1,0 +1,562 @@
+@font-face {
+  font-family: 'VCR';
+  src: url("../assets/fonts/VCR_OSD_MONO_1.001.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RetroGaming';
+  src: url("../assets/fonts/Retro\ Gaming.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'RainyHearts';
+  src: url("../assets/fonts/rainyhearts.ttf") format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-style: normal;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  text-decoration: none; 
+  color: #F0F0F0 !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 0 !important;
+}
+
+h1, h2 {
+  margin-bottom: 0 !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+body {
+    height: 100vh;
+    background-color: #F0F0F0;
+    line-height: normal !important;
+}
+
+main {
+  background-color: #f495a9;
+}
+
+header {
+  display: flex !important;
+  justify-content: space-between;
+  background-color: #4F5D75;
+  border-bottom: 3px solid #FFB3C1;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.logo {
+  width: 110px;
+  height: 110px;
+  margin-left: 30px;
+
+}
+
+.parallax{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax::after{
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 8;
+  background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
+}
+
+.parallax-bg{
+  background-image: url('../assets/images/gato.jpg');
+  background-size: cover;  
+}
+
+.conteudo-inicio {
+  font-family: 'VCR';
+  font-size: 15px;
+  color: #000;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+
+header ul {
+  display: flex;
+  gap: 10px;
+  color: #fff;
+  font-family: 'VCR';
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+header ul > a {
+  display: flex;
+  background: url("../assets/images/botao.png") no-repeat;
+  background-size: contain;
+  color: #4F4F4F !important;
+  padding: 30px 20px;
+  width: 160px;
+  text-align: center;
+  font-family: 'RetroGaming', sans-serif;
+}
+
+header ul > a:active {
+  background: url("../assets/images/botao-pressionado.png") no-repeat;
+  background-size: contain;
+}
+
+header ul > a > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 120px;
+  transform: translateY(-20%);
+}
+
+
+header > img {
+  width: 100px;
+  height: 100px;
+}
+
+.links-login-cadastro {
+  display: flex;
+  gap: 15px;
+  margin: 30px 0 0 20px;
+  font-size: 17px;
+}
+
+.links-login-cadastro span {
+  color: #F0F0F0;
+}
+
+.links-login-cadastro p {
+  transition: .3s;
+}
+
+.links-login-cadastro p:hover {
+  color: #FFB3C1;
+  transition: .3s;
+  transform: scale(1.03);
+}
+
+.saudacao {
+  height: 80px;
+  margin-left: 20px;
+  display: none;
+  align-items: center;
+  gap: 20px;
+}
+
+.saudacao span {
+  color: #FFB3C1;
+}
+
+.saudacao i {
+  font-size: 20px;
+}
+
+.inicio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-image: linear-gradient(to right top, #f495a9, #f8a9b8, #fbbdc7, #fed1d7, #ffe5e8);
+}
+
+.conteudo-inicio > h1 {
+  font-family: 'VCR';
+  font-size: 50px;
+  margin-bottom: 40px !important;
+  color: #7A4F4F;
+}
+
+.conteudo-inicio p{
+  width: 900px;
+  font-family: 'RainyHearts', sans-serif;
+  font-size: 29px;
+  font-weight: 600;
+  color: #7A4F4F;
+}
+
+.gatinho {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  left: 10%;
+  top: 10%;
+  animation: float 4s ease-in-out infinite;
+}
+
+.gatinho2 {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: 7%;
+  top: 65%;
+  transform: scaleX(-1);
+  animation: float-invertido 4s ease-in-out infinite;
+}
+
+.sobre {
+  height: 100vh; 
+  width: 100%; 
+  background: url("../assets/images/layered-waves-haikei.png") no-repeat; 
+  background-size: cover;
+  background-color: #f495a9; 
+}
+
+.conteudo-sobre {
+  display: flex;
+  flex-direction: column;
+  width: 1000px;
+  margin-left: 100px;
+  padding-top: 50px;
+  gap: 25px;
+}
+
+.conteudo-sobre > h1 {
+  font-family: 'VCR';
+  font-size: 50px;
+  color: #7A4F4F;
+}
+
+.conteudo-sobre > h2 {
+  font-family: 'VCR';
+  font-size: 40px;
+  color: #7A4F4F;
+}
+
+.conteudo-sobre > p {
+  font-family: 'RainyHearts', sans-serif;
+  font-size: 25px;
+  font-weight: 600;
+  color: #7A4F4F;
+
+}
+
+.conteudo-sobre:first-child > p {
+  margin-bottom: 25px !important;
+}
+
+.curiosidades {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; 
+  width: 100%; 
+  background-color: #FFB3C1;
+  position: relative;
+}
+
+.curiosidades img {
+  position: absolute;
+  right: 2.5%;
+  bottom: 0;
+  width: 270px;
+}
+
+.conteudo-curiosidades {
+  width: 800px;
+  display: flex;  
+  font-size: 25px;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'RainyHearts', sans-serif;
+  color: #7A4F4F;
+}
+
+.conteudo-curiosidades > h1, 
+.conteudo-curiosidades > h2 {
+  font-family: 'VCR';
+  color: #553030;
+}
+
+.conteudo-curiosidades > h1 {
+  font-size: 45px;
+}
+
+.conteudo-curiosidades > h2 {
+  align-self: start;
+  font-size: 35px;
+  margin-top: 25px;
+}
+
+.conteudo-curiosidades ul {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  width: 700px;
+  list-style-type: disc;
+  color: #7A4F4F;
+  font-family: 'RainyHearts', sans-serif;
+}
+
+.conteudo-curiosidades li {
+  margin-top: 20px;
+  font-size: 22.5px;
+  font-weight: 600;
+}
+
+.crie-seu-gato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  background-color: #A0C1D1;
+  color: #4F5D75;
+}
+
+.conteudo-crie-seu-gato {
+  width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.crie-seu-gato h1 {
+  font-family: 'VCR';
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #7A4F4F; 
+  text-shadow: 1px 1px 2px pink;
+}
+
+.crie-seu-gato .card-container {
+  height: 600px;
+  width: 1000px;
+  background-color: #F0F0F0;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  margin-bottom: 40px;
+}
+
+.fale-conosco {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding-top: 40px;
+  background-color: #F8EDEB;
+  color: #5D576B;
+  position: relative;
+}
+
+.conteudo-fale-conosco h1 {
+  font-family: 'VCR', sans-serif;
+  font-size: 45px;
+  margin-bottom: 30px !important;
+}
+
+.card-fale-conosco {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px 0 30px 40px;
+  min-height: 550px;
+  width: 500px;
+  background-color: #F0F0F0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border: 2px solid #4F5D75;
+  border-radius: 10px;
+  margin-bottom: 40px;
+}
+
+.campos {
+  display: flex;
+  flex-direction: column;
+  font-family: 'RainyHearts', sans-serif;
+}
+
+.campos p {
+  font-family: 'VCR';
+  font-size: 17px;
+}
+
+.campos input {
+  background: none;
+  border: 2px solid #4F5D75;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  padding: 2px;
+  width: 430px;
+  height: 35px;
+  font-size: 20px;
+  padding-left: 10px;
+  outline: none;
+}
+
+.campos textarea {
+  background: none;
+  border: 2px solid #4F5D75;
+  resize: none;
+  height: 300px;
+  border-radius: 5px;
+  padding: 5px 0 0 10px;
+  font-size: 20px;
+  outline: none;
+}
+
+.campos input, textarea {
+  font-family: 'RainyHearts', sans-serif;
+  color: #4F5D75;
+}
+
+.campos button {
+  background: none;
+  border: 2px solid #4F5D75;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'VCR';
+  font-size: 18px;
+  color: #5D576B;
+  transition: .3s;
+}
+
+.campos button:hover {
+  background-color: #f495a9;
+  color: #F0F0F0;
+  transition: .3s;
+}
+
+.pixel-cat {
+  position: absolute;
+  width: 200px;
+  left: 15%;
+  bottom: 0;
+}
+
+.pixel-cat2 {
+  position: absolute;
+  width: 200px;
+  bottom: 0;
+  right: 15%;
+  transform: scaleX(-1);
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  background-color: #4F5D75;
+  color: #F0F0F0;
+  padding: 20px;
+  border-top: 3px solid #f495a9;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-container img {
+  width: 150px;
+}
+
+.footer-nav ul {
+  display: flex;
+  gap: 20px;
+  font-family: 'RetroGaming';
+}
+
+.footer-nav li {
+  border-bottom: 1px solid #F0F0F0;
+  transition: .3s;
+}
+
+.footer-nav li:hover {
+  color: #f495a9;
+  transition: .3s;
+}
+
+.social {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  font-size: 30px;
+  margin: 30px 30px 0 0;   
+}
+
+.social i {
+  transition: .3s;
+}
+
+.social i:hover {
+  transform: scale(1.2);
+  color: #f495a9;
+  transition: .3s;
+}
+
+footer p {
+  font-family: 'VCR';
+  font-size: 17px;
+  color: #E0E0E0;
+  text-align: center;
+  margin-top: 10px;
+}
+
+@keyframes float{
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes float-invertido {
+  0% {
+    transform: translateY(0px) scaleX(-1);
+  }
+  50% {
+    transform: translateY(20px) scaleX(-1);
+  }
+  100% {
+    transform: translateY(0px) scaleX(-1);
+  }
+}

@@ -1,0 +1,62 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;   
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: url("../assets/images/sun-tornado.svg") no-repeat;
+    background-size: cover;
+}
+
+.nes-container.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 480px;
+    width: 600px;
+    background-color: #F0F0F0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-bottom: 40px;
+}
+
+.nes-container.register .title {
+    margin-top: 30px;
+    font-size: 20px;
+}
+
+.nes-field .nes-input {
+    margin-bottom: 20px;
+    padding: 0;
+    font-size: 15px !important;
+    width: 400px;
+    height: 40px;
+}
+
+.nes-field label {
+    margin-top: 10px;
+}
+
+.nes-btn {
+    margin-top: 20px !important;
+}
+
+.is-guest {
+    margin-top: 30px;
+    font-size: 13px;
+}
+
+.is-guest a {
+    color: #fd7b97;
+}
+
+.is-guest a:hover {
+    text-decoration: none;
+    color: #fa4c72;
+}
+

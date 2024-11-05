@@ -1,82 +1,229 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gatices</title>
+    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./css/styles.css" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-    <title>AquaTech | Página Inicial</title>
+    <link
+      href="https://unpkg.com/nes.css/css/nes-core.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <img class="logo" src="./assets/images/logo.png" alt="" />
+        <nav>
+          <ul>
+            <a href="#inicio">
+              <div>
+                <li>Início</li>
+              </div>
+            </a>
+            <a href="#sobre">
+              <div>
+                <li>Sobre</li>
+              </div>
+            </a>
+            <a href="#curiosidades">
+              <div>
+                <li>Curiosidades</li>
+              </div>
+            </a>
+            <a href="#crie-seu-gato">
+              <div>
+                <li>Crie seu gato</li>
+              </div>
+            </a>
+            <a href="#fale-conosco">
+              <div>
+                <li>Fale conosco</li>
+              </div>
+            </a>
+            <div class="links-login-cadastro" id="sessaoLogin">
+              <a href="./login.html">
+                <p>Entrar</p>
+              </a>
+              <span>|</span>
+              <a href="./cadastro.html">
+                <p>Criar conta</p>
+              </a>
+            </div>
+            <div class="saudacao" id="saudacao">
+              <h1>Olá, <span id="b_usuario"></span>!</h1>
+              <a onclick="sair()">
+                <i><i class="fa-solid fa-arrow-right-from-bracket"></i>
+              </a>
+            </div>
+          </ul>
+        </nav>
+      </header>
 
-    <script src="./js/sessao.js"></script>
-
-    <link rel="stylesheet" href="./css/estilo.css">
-    <link rel="icon" href="./assets/icon/favicon2.ico">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-</head>
-
-<body>
-    <div class="header">
-      <div class="container">
-        <h1 class="titulo">AquaTech</h1>
-        <ul class="navbar">
-          <li class="agora">
-            <a href="#">Inicial</a>
-          </li>
-          <li>
-            <a href="simulador.html">Simulador</a>
-          </li>
-          <li>|</li>
-          <li>
-            <a href="login.html">Login</a>
-          </li>
-          <li>
-            <a href="cadastro.html">Cadastro</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  
-    <div class="banner">
-      <div class="container">
-        <p>Preservando <span>hoje</span> para existirem <span>amanhã</span>.</p>
-      </div>
-    </div>
-  
-    <div class="social">
-      <div class="container">
-        <div class="boxes">
-          <div class="box">
-            <img src="assets/imgs/planet-earth_color.png">
-            <h4>Missão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/lightbulb_color.png">
-            <h4>Visão</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
-          </div>
-          <div class="box">
-            <img src="assets/imgs/growth_color.png">
-            <h4>Valores</h4>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Et, quas cupiditate asperiores provident magnam
-              vitae illum iusto fugiat atque deleniti nulla sed iure suscipit, laborum, aliquid accusantium cum dicta
-              minima.</p>
+      <section class="parallax parallax-bg"></section>
+      <section class="inicio" id="inicio">
+        <img class="gatinho" src="./assets/images/gatinho-rosa.png" alt="" />
+        <img class="gatinho2" src="./assets/images/gatinho-rosa.png" alt="" />
+        <div class="conteudo-inicio">
+          <h1>Seja bem-vindo à Gatices!</h1>
+          <p>
+            Aqui é o lugar perfeito para todos que amam o universo dos gatinhos!
+            Prepare-se para explorar conteúdos repletos de fofura, dicas de
+            cuidado, curiosidades e muita diversão sobre esses pequenos felinos.
+            Quer você seja um tutor apaixonado ou apenas um admirador dos
+            encantos felinos, sinta-se em casa e deixe-se levar pelas patinhas
+            que vão guiá-lo em cada página. Entre, descubra e aproveite –
+            afinal, gatos tornam a vida mais leve e feliz!
+          </p>
+        </div>
+      </section>
+      <section>
+        <div class="sobre" id="sobre">
+          <div class="conteudo-sobre">
+            <h1>Sobre Nós</h1>
+            <p>
+              Bem-vindo ao nosso espaço dedicado aos adoráveis gatinhos! Aqui,
+              acreditamos que esses pequenos felinos não são apenas pets, mas
+              verdadeiros membros da família que trazem alegria e amor para
+              nossas vidas.
+            </p>
+            <h2>Nossa Missão</h2>
+            <p>
+              Nossa missão é celebrar a beleza, a curiosidade e a personalidade
+              única de cada gatinho. Oferecemos informações valiosas sobre
+              cuidados, saúde e comportamento, além de dicas sobre como criar um
+              ambiente acolhedor para seu amigo felino. Acreditamos que cada
+              gatinho merece um lar cheio de carinho e atenção.
+            </p>
           </div>
         </div>
-      </div>
-    </div>
-  
-    <div class="footer">
-      <div class="container">
-        <h4>Feito com amor por aluno &hearts; SPTech &copy; 2023</h4>
-        <span class="version">v1.0.0</span>
-      </div>
-    </div>
-  </body>
+      </section>
+      <section class="curiosidades" id="curiosidades">
+        <div class="conteudo-curiosidades">
+          <h1>Curiosidades!!!</h1>
+          <h2>Você sabia?</h2>
+            <ul>
+              <li>
+                Os gatos domésticos desenvolveram uma forma única de se
+                comunicar com os humanos. Enquanto os felinos na natureza
+                costumam usar vocalizações para se comunicar com outros animais,
+                os gatos domésticos frequentemente "falam" apenas com os
+                humanos, utilizando uma variedade de miados, ronronados e
+                expressões faciais.
+              </li>
+              <li>
+                Os gatos têm um ciclo de sono muito interessante. Eles dormem
+                entre 12 a 16 horas por dia, e cerca de 70% desse sono é leve,
+                permitindo que eles fiquem alertas a qualquer movimento ou som,
+                mesmo enquanto descansam.
+              </li>
+              <li>
+                Os gatos têm uma visão noturna excepcional, permitindo que vejam
+                em ambientes com apenas 1/6 da luz necessária para que um humano
+                enxergue. Isso é devido à presença de uma estrutura chamada
+                "tapetum lucidum" em seus olhos, que reflete a luz e melhora a
+                visão em condições de pouca luz.
+              </li>
+              <li>
+                Os bigodes dos gatos não são apenas para estética. Eles são
+                órgãos sensoriais altamente sensíveis que ajudam os gatos a
+                medir espaços e detectar mudanças em seu ambiente, permitindo
+                que percebam objetos e até mesmo correntes de ar.
+              </li>
+            </ul>
+        </div>
+        <img src="./assets/images/gatinho-rosa2.png" alt="" />
+      </section>
+      <section class="crie-seu-gato" id="crie-seu-gato">
+        <div class="conteudo-crie-seu-gato">
+          <h1>Crie o seu gato virtual!</h1>
+        </div>
+        <div class="card-container"></div>
+      </section>
+      <section class="fale-conosco" id="fale-conosco">
+        <div class="conteudo-fale-conosco">
+          <h1>Fale conosco</h1>
+        </div>
+        <div class="card-fale-conosco">
+          <div class="campos">
+            <p>Nome:</p>
+            <input type="text" /><br />
+            <p>Email:</p>
+            <input type="email" /><br />
+            <p>Mensagem:</p>
+            <textarea name="" id=""></textarea><br />
+            <button>Enviar</button>
+          </div>
+        </div>
+        <img class="pixel-cat" src="./assets/images/pink-pixel-cat.png" alt="" />
+        <img class="pixel-cat2" src="./assets/images/pink-pixel-cat.png" alt="" />
+      </section>
+      <footer>
+        <div class="footer-container">
+          <img src="./assets/images/logo.png" alt="" />
+          <nav class="footer-nav">
+            <ul>
+              <a href="#inicio">
+                <li>Início</li>
+              </a>
+              <span>|</span>
+              <a href="#sobre">
+                <li>Sobre</li>
+              </a>
+              <span>|</span>
+              <a href="#curiosidades">
+                <li>Curiosidades</li>
+              </a>
+              <span>|</span>
+              <a href="#crie-seu-gato">
+                <li>Crie seu gato</li>
+              </a>
+              <span>|</span>
+              <a href="#fale-conosco">
+                <li>Fale conosco</li>
+              </a>
+            </ul>
+          </nav>
+          <div class="social">
+            <a href="">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://instagram.com/nic.cs_">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+            <a href="https://github.com/NiCoelho-tech">
+              <i class="fa-brands fa-github"></i>
+            </a>
+          </div>
+        </div>
+        <p>© 2024 Gatices. Todos os direitos reservados.</p>
+      </footer>
+    </main>
+    <script>
+      b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
+       
+      const login = sessaoLogin;
+      const saudacaoUsuario = saudacao;
 
+      if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+        login.style.display = "none";
+        saudacaoUsuario.style.display = "flex";
+      }
+
+      function sair() {
+        sessionStorage.clear();
+        window.location.reload();
+      }
+    </script>
+  </body>
 </html>
