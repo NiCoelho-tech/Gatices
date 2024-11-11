@@ -38,7 +38,7 @@ a {
 
 a:hover {
   text-decoration: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 ul {
@@ -52,6 +52,10 @@ h1, h2 {
 
 p {
   margin-bottom: 0 !important;
+}
+
+.nes-btn, button, a, .nes-pointer {
+  cursor: pointer !important;
 }
 
 body {
@@ -142,7 +146,7 @@ header ul > a:active {
 }
 
 header ul > a > div > li:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 header ul > a > div {
@@ -177,7 +181,7 @@ header > img {
   color: #FFB3C1;
   transition: .3s;
   transform: scale(1.03);
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .saudacao {
@@ -199,7 +203,7 @@ header > img {
 
 .saudacao i:hover {
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -407,7 +411,7 @@ header > img {
 }
 
 .selecao-gatos img:hover {
-  cursor: pointer;
+  cursor: pointer !important;
   filter: brightness(1.2);
 }
 
@@ -498,7 +502,7 @@ header > img {
 .campos button:hover {
   background-color: #f495a9;
   color: #F0F0F0;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -549,7 +553,7 @@ footer {
 
 .footer-nav li:hover {
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -569,7 +573,7 @@ footer {
 .social i:hover {
   transform: scale(1.2);
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
