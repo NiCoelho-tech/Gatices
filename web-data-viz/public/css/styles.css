@@ -394,6 +394,7 @@ header > img {
   align-items: center;
   justify-content: center;
   background-color: #F0F0F0;
+  border-radius: inherit;
 }
 
 .selecao h1 {
@@ -485,6 +486,7 @@ header > img {
 .campos input, textarea {
   font-family: 'RainyHearts', sans-serif;
   color: #4F5D75;
+  cursor: text;
 }
 
 .campos button {
