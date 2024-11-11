@@ -61,7 +61,7 @@
               </a>
             </div>
             <div class="saudacao" id="saudacao">
-              <h1>Olá, <span id="b_usuario"></span>!</h1>
+              <h1>Miauu, <span id="b_usuario"></span>!</h1>
               <a onclick="sair()">
                 <i><i class="fa-solid fa-arrow-right-from-bracket"></i>
               </a>
@@ -149,7 +149,7 @@
           <h1>Crie o seu gato virtual!</h1>
         </div>
         <div class="card-container">
-          <div class="selecao" id="div_selecao">
+          <div class="selecao" id="div_selecao" style="display: none;">
             <h1>Selecione o tipo de gato</h1>
             <div class="selecao-gatos">
               <img src="./assets/gatinhos-selecao/rosa.gif" onclick="esconderSelecao(), selecionarGato('rosa')" style="height: 90px; width: 90px; transform: translateY(40px); margin-right: 15px;" alt="">
@@ -159,6 +159,22 @@
               <img src="./assets/gatinhos-selecao/laranja.gif" onclick="esconderSelecao(), selecionarGato('laranja')" alt="">
               <img src="./assets/gatinhos-selecao/roxo.gif" onclick="esconderSelecao(), selecionarGato('roxo')" alt="">
               <img src="./assets/gatinhos-selecao/preto.gif" onclick="esconderSelecao(), selecionarGato('preto')" alt="">
+            </div>
+          </div>
+          <div class="info-gato">
+            <h1>Digite o nome do seu gato</h1>
+            <div class="campos">
+              <input type="text">
+              <ul class="generos">
+                <li class="genero masculino">
+                  <input type="radio" class="feminino" name="genero" id="masc">
+                  <label for="masc">Masculino</label>
+                </li>
+                <li class="genero feminino">
+                  <input type="radio" class="masculino" name="genero" id="fem">
+                  <label for="fem" class="icone-fem">Feminino</label>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
