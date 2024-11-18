@@ -424,32 +424,6 @@ header > img {
   justify-content: center;
 }
 
-<<<<<<< HEAD
-.info-gato .nome-gato {
-  display: flex;
-  flex-direction: column;
-}
-
-.info-gato label {
-  font-size: 25px;
-  font-family: 'VCR', sans-serif;
-}
-
-.info-gato input {
-  background: none;
-  margin-top: 10px;
-  font-size: 23px;
-  font-family: 'RainyHearts';
-  border: none;
-  border-bottom: 1px solid #000;
-  outline: none;
-}
-
-.info-gato input:hover {
-  cursor: text;
-}
-
-=======
 .info-gato h1 {
   font-size: 24px;
   font-family: 'RainyHearts', sans-serif;
@@ -507,8 +481,6 @@ header > img {
   background-image: url("../assets/images/female-icon.jpg");
 }
 
-
->>>>>>> 33afe961e58544cd117edbf9982f95d1d563f6e7
 .fale-conosco {
   display: flex;
   flex-direction: column;
