@@ -390,6 +390,7 @@ header > img {
   align-items: center;
   justify-content: center;
   background-color: #F0F0F0;
+  border-radius: inherit;
 }
 
 .selecao h1 {
@@ -409,6 +410,38 @@ header > img {
 .selecao-gatos img:hover {
   cursor: pointer;
   filter: brightness(1.2);
+}
+
+.info-gato {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-gato .nome-gato {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-gato label {
+  font-size: 25px;
+  font-family: 'VCR', sans-serif;
+}
+
+.info-gato input {
+  background: none;
+  margin-top: 10px;
+  font-size: 23px;
+  font-family: 'RainyHearts';
+  border: none;
+  border-bottom: 1px solid #000;
+  outline: none;
+}
+
+.info-gato input:hover {
+  cursor: text;
 }
 
 .fale-conosco {
