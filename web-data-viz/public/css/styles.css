@@ -38,7 +38,7 @@ a {
 
 a:hover {
   text-decoration: none !important;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 ul {
@@ -52,6 +52,10 @@ h1, h2 {
 
 p {
   margin-bottom: 0 !important;
+}
+
+.nes-btn, button, a, .nes-pointer {
+  cursor: pointer !important;
 }
 
 body {
@@ -142,7 +146,7 @@ header ul > a:active {
 }
 
 header ul > a > div > li:hover {
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 header ul > a > div {
@@ -177,7 +181,7 @@ header > img {
   color: #FFB3C1;
   transition: .3s;
   transform: scale(1.03);
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .saudacao {
@@ -199,7 +203,7 @@ header > img {
 
 .saudacao i:hover {
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -408,7 +412,7 @@ header > img {
 }
 
 .selecao-gatos img:hover {
-  cursor: pointer;
+  cursor: pointer !important;
   filter: brightness(1.2);
 }
 
@@ -420,6 +424,7 @@ header > img {
   justify-content: center;
 }
 
+<<<<<<< HEAD
 .info-gato .nome-gato {
   display: flex;
   flex-direction: column;
@@ -444,6 +449,66 @@ header > img {
   cursor: text;
 }
 
+=======
+.info-gato h1 {
+  font-size: 24px;
+  font-family: 'RainyHearts', sans-serif;
+  color: #4F5D75;
+}
+
+.info-gato .campos input {
+  border: none;
+  border-bottom: 2px solid #000;
+  border-radius: 0%;
+  margin-top: 20px;
+  padding-left: 0%;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.generos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;  /* Adicionando espaçamento entre os itens */
+}
+
+.genero {
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  height: 70px;
+  width: 120px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.genero label {
+  background: #fff no-repeat center center;
+  cursor: pointer;
+  display: block;
+  font-size: 0;
+  width: 100%;
+  height: 100%;
+  text-indent: 100%;
+  white-space: nowrap;
+  background-size: 50%;  /* Ajuste o tamanho do ícone */
+  background-position: center;
+}
+
+.masculino label {
+  background-image: url("../assets/images/male-icon.jpg");
+}
+
+.feminino label {
+  background-image: url("../assets/images/female-icon.jpg");
+}
+
+
+>>>>>>> 33afe961e58544cd117edbf9982f95d1d563f6e7
 .fale-conosco {
   display: flex;
   flex-direction: column;
@@ -514,6 +579,7 @@ header > img {
 .campos input, textarea {
   font-family: 'RainyHearts', sans-serif;
   color: #4F5D75;
+  cursor: text;
 }
 
 .campos button {
@@ -531,7 +597,7 @@ header > img {
 .campos button:hover {
   background-color: #f495a9;
   color: #F0F0F0;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -582,7 +648,7 @@ footer {
 
 .footer-nav li:hover {
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 
@@ -602,7 +668,7 @@ footer {
 .social i:hover {
   transform: scale(1.2);
   color: #f495a9;
-  cursor: pointer;
+  cursor: pointer !important;
   transition: .3s;
 }
 

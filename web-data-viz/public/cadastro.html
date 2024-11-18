@@ -101,6 +101,22 @@
       setTimeout(sumirMensagem, 3000);
     }
 
+    function validarEmail() {
+      if (!emailVar.includes("@")) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "O email deve conter '@'!";
+        gatinho_sentado.src = "./assets/images/pink-pixel-cat3.png";
+        return false;
+      } else if (!emailVar.endsWith(".com") || !emailVar.endsWith(".br")) {
+        cardErro.style.display = "block";
+        mensagem_erro.innerHTML = "O email deve acabar com '.com' ou '.br'!";
+        gatinho_sentado.src = "./assets/images/pink-pixel-cat3.png";
+        return false;
+      } else {
+        setTimeout(sumirMensagem, 3000);
+      }
+    }
+
     if (nomeVar.length < 1) {
       cardErro.style.display = "block";
       mensagem_erro.innerHTML = "O campo nome está vazio!";
