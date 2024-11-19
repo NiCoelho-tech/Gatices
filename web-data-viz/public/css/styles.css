@@ -425,9 +425,15 @@ header > img {
 }
 
 .info-gato h1 {
-  font-size: 24px;
+  font-size: 30px;
   font-family: 'RainyHearts', sans-serif;
   color: #4F5D75;
+}
+
+.info-gato .campos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .info-gato .campos input {
@@ -445,12 +451,12 @@ header > img {
   margin: 0;
   padding: 0;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 25px;  /* Adicionando espaçamento entre os itens */
+  gap: 25px; /* Espaçamento entre os itens */
 }
 
 .genero {
-  border: 1px solid #ccc;
   box-sizing: border-box;
   height: 70px;
   width: 120px;
@@ -460,8 +466,14 @@ header > img {
   align-items: center;
 }
 
+/* Escondendo o input */
+.genero input[type="radio"] {
+  display: none;
+}
+
+/* Estilização do label */
 .genero label {
-  background: #fff no-repeat center center;
+  background:  no-repeat center center;
   cursor: pointer;
   display: block;
   font-size: 0;
@@ -469,17 +481,85 @@ header > img {
   height: 100%;
   text-indent: 100%;
   white-space: nowrap;
-  background-size: 50%;  /* Ajuste o tamanho do ícone */
+  background-size: 50%; /* Ajuste o tamanho do ícone */
   background-position: center;
 }
 
 .masculino label {
-  background-image: url("../assets/images/male-icon.jpg");
+  background-image: url("../assets/images/male-icon.png");
 }
 
 .feminino label {
-  background-image: url("../assets/images/female-icon.jpg");
+  background-image: url("../assets/images/female-icon.png");
 }
+
+.genero input[type="radio"] ~ label {
+  transition: .3s;
+}
+
+.genero input[type="radio"]:hover ~ label {
+  filter: brightness(1.2);
+  transition: .3s;
+}
+
+.genero .check {
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 20px;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.genero input[type="radio"]:checked + .check {
+  display: block;
+  opacity: 1;
+  transform: scale(1.2); 
+}
+
+.genero input[type="radio"]:checked + .check {
+  animation: bounce 0.3s ease forwards;
+}
+
+.campos .btn-avancar {
+  width: 200px;
+  margin-top: 30px;
+  justify-self: center;
+} 
+
+.gato {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;  
+  height: 100%;
+  width: 100%;
+  padding-top: 40px;
+  background-color: #f495a9;
+  color: #5D576B;
+  position: relative;
+}
+
+.gif {
+  width: 134px; /* Novo tamanho de exibição */
+  height: 144px; /* Novo tamanho de exibição */
+  background: url("../assets/sprite-sheets/sheet-rosa/2.png") no-repeat;
+  background-size: 560px 144px; /* Aumentando o alcance da sprite sheet */
+  animation: play 1s steps(4) forwards infinite; /* Mantendo a animação com 4 frames */
+}
+
+@keyframes play {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: -560px 0; /* Deslocamento para a direita após 4 frames */
+  }
+}
+
+
+
 
 .fale-conosco {
   display: flex;
@@ -674,4 +754,10 @@ footer p {
   100% {
     transform: translateY(0px) scaleX(-1);
   }
+}
+
+@keyframes bounce {
+  0% { transform: scale(1.2); }
+  50% { transform: scale(0.9); }
+  100% { transform: scale(1); }
 }

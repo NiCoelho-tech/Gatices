@@ -161,21 +161,30 @@
               <img src="./assets/gatinhos-selecao/preto.gif" onclick="esconderSelecao(), selecionarGato('preto')" alt="">
             </div>
           </div>
-          <div class="info-gato">
+          <div class="info-gato" style="display: none;">
             <h1>Digite o nome do seu gato</h1>
             <div class="campos">
               <input type="text">
               <ul class="generos">
                 <li class="genero masculino">
                   <input type="radio" class="feminino" name="genero" id="masc">
+                  <img class="check" src="assets/images/check-icon.png" alt="">
                   <label for="masc">Masculino</label>
                 </li>
                 <li class="genero feminino">
                   <input type="radio" class="masculino" name="genero" id="fem">
+                  <img class="check" src="assets/images/check-icon.png" alt="">
                   <label for="fem" class="icone-fem">Feminino</label>
                 </li>
               </ul>
+              <button class="btn-avancar">
+                Avançar
+                <i class="fas fa-arrow-right"></i>
+              </button>
             </div>
+          </div>
+          <div class="gato">
+            <div class="gif"></div>
           </div>
         </div>
       </section>
