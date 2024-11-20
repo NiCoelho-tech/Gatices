@@ -9,3 +9,10 @@ CREATE TABLE usuario(
     senha VARCHAR(45)
 );
 
+CREATE TABLE gato (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(100),
+    genero ENUM('M', 'F'), 
+    raca VARCHAR(100)
+);
+

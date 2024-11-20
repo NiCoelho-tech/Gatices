@@ -1,20 +1,20 @@
 @font-face {
-  font-family: 'VCR';
-  src: url("../assets/fonts/VCR_OSD_MONO_1.001.ttf") format('truetype');
+  font-family: "VCR";
+  src: url("../assets/fonts/VCR_OSD_MONO_1.001.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'RetroGaming';
-  src: url("../assets/fonts/Retro\ Gaming.ttf") format('truetype');
+  font-family: "RetroGaming";
+  src: url("../assets/fonts/Retro\ Gaming.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'RainyHearts';
-  src: url("../assets/fonts/rainyhearts.ttf") format('truetype');
+  font-family: "RainyHearts";
+  src: url("../assets/fonts/rainyhearts.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
@@ -32,8 +32,8 @@ html {
 }
 
 a {
-  text-decoration: none; 
-  color: #F0F0F0 !important;
+  text-decoration: none;
+  color: #f0f0f0 !important;
 }
 
 a:hover {
@@ -46,7 +46,8 @@ ul {
   margin-bottom: 0 !important;
 }
 
-h1, h2 {
+h1,
+h2 {
   margin-bottom: 0 !important;
 }
 
@@ -54,14 +55,17 @@ p {
   margin-bottom: 0 !important;
 }
 
-.nes-btn, button, a, .nes-pointer {
+.nes-btn,
+button,
+a,
+.nes-pointer {
   cursor: pointer !important;
 }
 
 body {
-    height: 100vh;
-    background-color: #F0F0F0;
-    line-height: normal !important;
+  height: 100vh;
+  background-color: #f0f0f0;
+  line-height: normal !important;
 }
 
 main {
@@ -71,8 +75,8 @@ main {
 header {
   display: flex !important;
   justify-content: space-between;
-  background-color: #4F5D75;
-  border-bottom: 3px solid #FFB3C1;
+  background-color: #4f5d75;
+  border-bottom: 3px solid #ffb3c1;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
@@ -81,10 +85,9 @@ header {
   width: 110px;
   height: 110px;
   margin-left: 30px;
-
 }
 
-.parallax{
+.parallax {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -96,22 +99,27 @@ header {
   background-size: cover;
 }
 
-.parallax::after{
+.parallax::after {
   content: "";
   height: 100%;
   width: 100%;
   position: absolute;
   z-index: 8;
-  background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) 40%, #000 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 40%,
+    #000 100%
+  );
 }
 
-.parallax-bg{
-  background-image: url('../assets/images/gato.jpg');
-  background-size: cover;  
+.parallax-bg {
+  background-image: url("../assets/images/gato.jpg");
+  background-size: cover;
 }
 
 .conteudo-inicio {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 15px;
   color: #000;
   text-align: center;
@@ -119,12 +127,11 @@ header {
   margin-bottom: 30px;
 }
 
-
 header ul {
   display: flex;
   gap: 10px;
   color: #fff;
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 14px;
   margin-top: 5px;
 }
@@ -133,11 +140,11 @@ header ul > a {
   display: flex;
   background: url("../assets/images/botao.png") no-repeat;
   background-size: contain;
-  color: #4F4F4F !important;
+  color: #4f4f4f !important;
   padding: 30px 20px;
   width: 160px;
   text-align: center;
-  font-family: 'RetroGaming', sans-serif;
+  font-family: "RetroGaming", sans-serif;
 }
 
 header ul > a:active {
@@ -170,16 +177,16 @@ header > img {
 }
 
 .links-login-cadastro span {
-  color: #F0F0F0;
+  color: #f0f0f0;
 }
 
 .links-login-cadastro p {
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .links-login-cadastro p:hover {
-  color: #FFB3C1;
-  transition: .3s;
+  color: #ffb3c1;
+  transition: 0.3s;
   transform: scale(1.03);
   cursor: pointer !important;
 }
@@ -193,18 +200,18 @@ header > img {
 }
 
 .saudacao span {
-  color: #FFB3C1;
+  color: #ffb3c1;
 }
 
 .saudacao i {
   font-size: 20px;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .saudacao i:hover {
   color: #f495a9;
   cursor: pointer !important;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .inicio {
@@ -215,22 +222,29 @@ header > img {
   height: 100vh;
   width: 100%;
   position: relative;
-  background-image: linear-gradient(to right top, #f495a9, #f8a9b8, #fbbdc7, #fed1d7, #ffe5e8);
+  background-image: linear-gradient(
+    to right top,
+    #f495a9,
+    #f8a9b8,
+    #fbbdc7,
+    #fed1d7,
+    #ffe5e8
+  );
 }
 
 .conteudo-inicio > h1 {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 50px;
   margin-bottom: 40px !important;
-  color: #7A4F4F;
+  color: #7a4f4f;
 }
 
-.conteudo-inicio p{
+.conteudo-inicio p {
   width: 900px;
-  font-family: 'RainyHearts', sans-serif;
+  font-family: "RainyHearts", sans-serif;
   font-size: 29px;
   font-weight: 600;
-  color: #7A4F4F;
+  color: #7a4f4f;
 }
 
 .gatinho {
@@ -253,11 +267,11 @@ header > img {
 }
 
 .sobre {
-  height: 100vh; 
-  width: 100%; 
-  background: url("../assets/images/layered-waves-haikei.png") no-repeat; 
+  height: 100vh;
+  width: 100%;
+  background: url("../assets/images/layered-waves-haikei.png") no-repeat;
   background-size: cover;
-  background-color: #f495a9; 
+  background-color: #f495a9;
 }
 
 .conteudo-sobre {
@@ -270,23 +284,22 @@ header > img {
 }
 
 .conteudo-sobre > h1 {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 50px;
-  color: #7A4F4F;
+  color: #7a4f4f;
 }
 
 .conteudo-sobre > h2 {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 40px;
-  color: #7A4F4F;
+  color: #7a4f4f;
 }
 
 .conteudo-sobre > p {
-  font-family: 'RainyHearts', sans-serif;
+  font-family: "RainyHearts", sans-serif;
   font-size: 25px;
   font-weight: 600;
-  color: #7A4F4F;
-
+  color: #7a4f4f;
 }
 
 .conteudo-sobre:first-child > p {
@@ -297,9 +310,9 @@ header > img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh; 
-  width: 100%; 
-  background-color: #FFB3C1;
+  height: 100vh;
+  width: 100%;
+  background-color: #ffb3c1;
   position: relative;
 }
 
@@ -312,17 +325,17 @@ header > img {
 
 .conteudo-curiosidades {
   width: 800px;
-  display: flex;  
+  display: flex;
   font-size: 25px;
   flex-direction: column;
   align-items: center;
-  font-family: 'RainyHearts', sans-serif;
-  color: #7A4F4F;
+  font-family: "RainyHearts", sans-serif;
+  color: #7a4f4f;
 }
 
-.conteudo-curiosidades > h1, 
+.conteudo-curiosidades > h1,
 .conteudo-curiosidades > h2 {
-  font-family: 'VCR';
+  font-family: "VCR";
   color: #553030;
 }
 
@@ -342,8 +355,8 @@ header > img {
   align-self: start;
   width: 700px;
   list-style-type: disc;
-  color: #7A4F4F;
-  font-family: 'RainyHearts', sans-serif;
+  color: #7a4f4f;
+  font-family: "RainyHearts", sans-serif;
 }
 
 .conteudo-curiosidades li {
@@ -357,8 +370,8 @@ header > img {
   flex-direction: column;
   align-items: center;
   height: 100vh;
-  background-color: #A0C1D1;
-  color: #4F5D75;
+  background-color: #a0c1d1;
+  color: #4f5d75;
 }
 
 .conteudo-crie-seu-gato {
@@ -371,17 +384,17 @@ header > img {
 }
 
 .crie-seu-gato h1 {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 40px;
   text-transform: uppercase;
-  color: #7A4F4F; 
+  color: #7a4f4f;
   text-shadow: 1px 1px 2px pink;
 }
 
 .crie-seu-gato .card-container {
   height: 600px;
   width: 1000px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   margin-bottom: 40px;
@@ -393,7 +406,7 @@ header > img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   border-radius: inherit;
 }
 
@@ -417,6 +430,7 @@ header > img {
 }
 
 .info-gato {
+  position: relative;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -424,10 +438,31 @@ header > img {
   justify-content: center;
 }
 
+.info-gato a {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  height: 40px;
+  width: 40px;
+  animation: float-to-left 1s ease-in-out infinite;
+}
+
+.info-gato a i {
+  font-size: 30px;
+  color: #4f5d75;
+  transition: 0.3s;
+}
+
+.info-gato a i:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
 .info-gato h1 {
   font-size: 30px;
-  font-family: 'RainyHearts', sans-serif;
-  color: #4F5D75;
+  font-family: "RainyHearts", sans-serif;
+  color: #4f5d75;
 }
 
 .info-gato .campos {
@@ -473,7 +508,7 @@ header > img {
 
 /* Estilização do label */
 .genero label {
-  background:  no-repeat center center;
+  background: no-repeat center center;
   cursor: pointer;
   display: block;
   font-size: 0;
@@ -494,12 +529,12 @@ header > img {
 }
 
 .genero input[type="radio"] ~ label {
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .genero input[type="radio"]:hover ~ label {
   filter: brightness(1.2);
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .genero .check {
@@ -515,51 +550,54 @@ header > img {
 .genero input[type="radio"]:checked + .check {
   display: block;
   opacity: 1;
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .genero input[type="radio"]:checked + .check {
   animation: bounce 0.3s ease forwards;
 }
 
-.campos .btn-avancar {
+.campos .btn-criar {
   width: 200px;
   margin-top: 30px;
   justify-self: center;
-} 
+}
+
+.campos .btn-criar i {
+  animation: float-to-right 0.5s ease-in-out infinite;
+}
 
 .gato {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;  
+  justify-content: center;
   height: 100%;
   width: 100%;
   padding-top: 40px;
   background-color: #f495a9;
-  color: #5D576B;
+  color: #5d576b;
   position: relative;
 }
 
 .gif {
-  width: 134px; /* Novo tamanho de exibição */
-  height: 144px; /* Novo tamanho de exibição */
+  width: 134px;
+  height: 144px;
   background: url("../assets/sprite-sheets/sheet-rosa/2.png") no-repeat;
-  background-size: 560px 144px; /* Aumentando o alcance da sprite sheet */
-  animation: play 1s steps(4) forwards infinite; /* Mantendo a animação com 4 frames */
+  background-size: 536px 144px;
+  animation: play 1.5s steps(4) forwards;
 }
 
 @keyframes play {
-  from {
+  0% {
     background-position: 0 0;
+    transform: translateX(0);
   }
-  to {
-    background-position: -560px 0; /* Deslocamento para a direita após 4 frames */
+  100% {
+    background-position: -536px 0;
+    transform: translateX(100px);
   }
 }
-
-
-
 
 .fale-conosco {
   display: flex;
@@ -567,13 +605,13 @@ header > img {
   align-items: center;
   min-height: 100vh;
   padding-top: 40px;
-  background-color: #F8EDEB;
-  color: #5D576B;
+  background-color: #f8edeb;
+  color: #5d576b;
   position: relative;
 }
 
 .conteudo-fale-conosco h1 {
-  font-family: 'VCR', sans-serif;
+  font-family: "VCR", sans-serif;
   font-size: 45px;
   margin-bottom: 30px !important;
 }
@@ -586,9 +624,9 @@ header > img {
   padding: 20px 0 30px 40px;
   min-height: 550px;
   width: 500px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  border: 2px solid #4F5D75;
+  border: 2px solid #4f5d75;
   border-radius: 10px;
   margin-bottom: 40px;
 }
@@ -596,17 +634,17 @@ header > img {
 .campos {
   display: flex;
   flex-direction: column;
-  font-family: 'RainyHearts', sans-serif;
+  font-family: "RainyHearts", sans-serif;
 }
 
 .campos p {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 17px;
 }
 
 .campos input {
   background: none;
-  border: 2px solid #4F5D75;
+  border: 2px solid #4f5d75;
   border-radius: 5px;
   margin-bottom: 20px;
   padding: 2px;
@@ -619,7 +657,7 @@ header > img {
 
 .campos textarea {
   background: none;
-  border: 2px solid #4F5D75;
+  border: 2px solid #4f5d75;
   resize: none;
   height: 300px;
   border-radius: 5px;
@@ -628,29 +666,30 @@ header > img {
   outline: none;
 }
 
-.campos input, textarea {
-  font-family: 'RainyHearts', sans-serif;
-  color: #4F5D75;
+.campos input,
+textarea {
+  font-family: "RainyHearts", sans-serif;
+  color: #4f5d75;
   cursor: text;
 }
 
 .campos button {
   background: none;
-  border: 2px solid #4F5D75;
+  border: 2px solid #4f5d75;
   margin-top: 10px;
   padding: 10px;
   border-radius: 10px;
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 18px;
-  color: #5D576B;
-  transition: .3s;
+  color: #5d576b;
+  transition: 0.3s;
 }
 
 .campos button:hover {
   background-color: #f495a9;
-  color: #F0F0F0;
+  color: #f0f0f0;
   cursor: pointer !important;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .pixel-cat {
@@ -671,8 +710,8 @@ header > img {
 footer {
   display: flex;
   flex-direction: column;
-  background-color: #4F5D75;
-  color: #F0F0F0;
+  background-color: #4f5d75;
+  color: #f0f0f0;
   padding: 20px;
   border-top: 3px solid #f495a9;
 }
@@ -690,18 +729,18 @@ footer {
 .footer-nav ul {
   display: flex;
   gap: 20px;
-  font-family: 'RetroGaming';
+  font-family: "RetroGaming";
 }
 
 .footer-nav li {
-  border-bottom: 1px solid #F0F0F0;
-  transition: .3s;
+  border-bottom: 1px solid #f0f0f0;
+  transition: 0.3s;
 }
 
 .footer-nav li:hover {
   color: #f495a9;
   cursor: pointer !important;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .social {
@@ -710,29 +749,29 @@ footer {
   align-items: center;
   gap: 20px;
   font-size: 30px;
-  margin: 30px 30px 0 0;   
+  margin: 30px 30px 0 0;
 }
 
 .social i {
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .social i:hover {
   transform: scale(1.2);
   color: #f495a9;
   cursor: pointer !important;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 footer p {
-  font-family: 'VCR';
+  font-family: "VCR";
   font-size: 17px;
-  color: #E0E0E0;
+  color: #e0e0e0;
   text-align: center;
   margin-top: 10px;
 }
 
-@keyframes float{
+@keyframes float {
   0% {
     transform: translateY(0px);
   }
@@ -757,7 +796,25 @@ footer p {
 }
 
 @keyframes bounce {
-  0% { transform: scale(1.2); }
-  50% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes float-to-left {
+  0% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0px);
+  }
 }

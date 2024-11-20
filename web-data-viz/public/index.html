@@ -149,41 +149,41 @@
           <h1>Crie o seu gato virtual!</h1>
         </div>
         <div class="card-container">
-          <div class="selecao" id="div_selecao" style="display: none;">
+          <div class="selecao" id="div_selecao">
             <h1>Selecione o tipo de gato</h1>
             <div class="selecao-gatos">
-              <img src="./assets/gatinhos-selecao/rosa.gif" onclick="esconderSelecao(), selecionarGato('rosa')" style="height: 90px; width: 90px; transform: translateY(40px); margin-right: 15px;" alt="">
-              <img src="./assets/gatinhos-selecao/calico2.gif" onclick="esconderSelecao(), selecionarGato('calico')" style="height: 80px; width: 70px; transform: translateY(35px); margin-right: 15px;" alt="">
-              <img src="./assets/gatinhos-selecao/cinza.gif" onclick="esconderSelecao(), selecionarGato('cinza')" alt="">
-              <img src="./assets/gatinhos-selecao/branco.gif" onclick="esconderSelecao(), selecionarGato('branco')" alt="">
-              <img src="./assets/gatinhos-selecao/laranja.gif" onclick="esconderSelecao(), selecionarGato('laranja')" alt="">
-              <img src="./assets/gatinhos-selecao/roxo.gif" onclick="esconderSelecao(), selecionarGato('roxo')" alt="">
-              <img src="./assets/gatinhos-selecao/preto.gif" onclick="esconderSelecao(), selecionarGato('preto')" alt="">
+              <img src="./assets/gatinhos-selecao/rosa.gif" onclick="selecionarGato('rosa')" style="height: 90px; width: 90px; transform: translateY(40px); margin-right: 15px;" alt="">
+              <img src="./assets/gatinhos-selecao/calico2.gif" onclick="selecionarGato('calico')" style="height: 80px; width: 70px; transform: translateY(35px); margin-right: 15px;" alt="">
+              <img src="./assets/gatinhos-selecao/cinza.gif" onclick="selecionarGato('cinza')" alt="">
+              <img src="./assets/gatinhos-selecao/branco.gif" onclick="selecionarGato('branco')" alt="">
+              <img src="./assets/gatinhos-selecao/laranja.gif" onclick="selecionarGato('laranja')" alt="">
+              <img src="./assets/gatinhos-selecao/roxo.gif" onclick="selecionarGato('roxo')" alt="">
+              <img src="./assets/gatinhos-selecao/preto.gif" onclick="selecionarGato('preto')" alt="">
             </div>
           </div>
-          <div class="info-gato" style="display: none;">
+          <div class="info-gato" id="div_info_gato" style="display: none;">
+            <a onclick="mostrarSelecao()">
+              <i class="fas fa-arrow-left"></i>
+            </a>
             <h1>Digite o nome do seu gato</h1>
             <div class="campos">
-              <input type="text">
+              <input type="text" id="ipt_nome_gato">
               <ul class="generos">
                 <li class="genero masculino">
-                  <input type="radio" class="feminino" name="genero" id="masc">
+                  <input type="radio" class="feminino" name="genero" id="masc" onclick="selecionarGenero('M')">
                   <img class="check" src="assets/images/check-icon.png" alt="">
                   <label for="masc">Masculino</label>
                 </li>
                 <li class="genero feminino">
-                  <input type="radio" class="masculino" name="genero" id="fem">
+                  <input type="radio" class="masculino" name="genero" id="fem" onclick="selecionarGenero('F')">
                   <img class="check" src="assets/images/check-icon.png" alt="">
                   <label for="fem" class="icone-fem">Feminino</label>
                 </li>
               </ul>
-              <button class="btn-avancar">
-                Avançar
-                <i class="fas fa-arrow-right"></i>
-              </button>
+              <button class="btn-criar" onclick="cadastrar()">Criar</button>
             </div>
           </div>
-          <div class="gato">
+          <div class="gato" style="display: none;">
             <div class="gif"></div>
           </div>
         </div>
@@ -263,23 +263,66 @@
         window.location.reload();
       }
 
-      function selecionarGato(gato) {
-        console.log(gato)
-      }
+      var generoGato = "";
+      var racaGato = "";
 
-      function esconderSelecao(){
+      function selecionarGato(gato){
         const selecao = div_selecao;
+        const infoGato = div_info_gato;
 
+        racaGato = gato;
         selecao.style.display = "none";
+        infoGato.style.display = "flex";
       }
 
-      function esconderInfoGato() {
-        const nome = ipt_nome.value;
-        
-        // if (nome.length > 0 && ) {
-
-        // }
+      function selecionarGenero(genero) {
+        generoGato = genero 
       }
+
+
+      function mostrarSelecao() {
+        const selecao = div_selecao;
+        const infoGato = div_info_gato;
+
+        selecao.style.display = "flex";
+        infoGato.style.display = "none";
+      }
+
+      function cadastrar() {
+        var nomeGatoVar = ipt_nome_gato.value;
+        var generoVar = generoGato;
+        var racaVar = racaGato;
+
+        fetch("/gatos/cadastrar", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+        nomeGatoServer: nomeGatoVar,
+        generoServer: generoVar,
+        racaServer: racaVar,
+        }),
+      })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        racaGato = "";
+        masc.checked = false;
+        fem.checked = false;
+        ipt_nome_gato.value = "";
+
+        if (resposta.ok) {
+          console.log(resposta);
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+      });
+
+      return false;
+    }
     </script>
   </body>
 </html>
