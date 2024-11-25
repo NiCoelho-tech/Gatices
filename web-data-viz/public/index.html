@@ -4,7 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gatices</title>
-    <link rel="shortcut icon" href="./assets/images/favicon.png" type="image/x-icon">
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.png"
+      type="image/x-icon"
+    />
+    <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/styles.css" />
 
     <link
@@ -20,7 +25,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body onload="listar(); verificarGato()">
     <main>
       <header>
         <img class="logo" src="./assets/images/logo.png" alt="" />
@@ -63,7 +68,7 @@
             <div class="saudacao" id="saudacao">
               <h1>Miauu, <span id="b_usuario"></span>!</h1>
               <a onclick="sair()">
-                <i><i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
               </a>
             </div>
           </ul>
@@ -112,35 +117,35 @@
         <div class="conteudo-curiosidades">
           <h1>Curiosidades!!!</h1>
           <h2>Você sabia?</h2>
-            <ul>
-              <li>
-                Os gatos domésticos desenvolveram uma forma única de se
-                comunicar com os humanos. Enquanto os felinos na natureza
-                costumam usar vocalizações para se comunicar com outros animais,
-                os gatos domésticos frequentemente "falam" apenas com os
-                humanos, utilizando uma variedade de miados, ronronados e
-                expressões faciais.
-              </li>
-              <li>
-                Os gatos têm um ciclo de sono muito interessante. Eles dormem
-                entre 12 a 16 horas por dia, e cerca de 70% desse sono é leve,
-                permitindo que eles fiquem alertas a qualquer movimento ou som,
-                mesmo enquanto descansam.
-              </li>
-              <li>
-                Os gatos têm uma visão noturna excepcional, permitindo que vejam
-                em ambientes com apenas 1/6 da luz necessária para que um humano
-                enxergue. Isso é devido à presença de uma estrutura chamada
-                "tapetum lucidum" em seus olhos, que reflete a luz e melhora a
-                visão em condições de pouca luz.
-              </li>
-              <li>
-                Os bigodes dos gatos não são apenas para estética. Eles são
-                órgãos sensoriais altamente sensíveis que ajudam os gatos a
-                medir espaços e detectar mudanças em seu ambiente, permitindo
-                que percebam objetos e até mesmo correntes de ar.
-              </li>
-            </ul>
+          <ul>
+            <li>
+              Os gatos domésticos desenvolveram uma forma única de se comunicar
+              com os humanos. Enquanto os felinos na natureza costumam usar
+              vocalizações para se comunicar com outros animais, os gatos
+              domésticos frequentemente "falam" apenas com os humanos,
+              utilizando uma variedade de miados, ronronados e expressões
+              faciais.
+            </li>
+            <li>
+              Os gatos têm um ciclo de sono muito interessante. Eles dormem
+              entre 12 a 16 horas por dia, e cerca de 70% desse sono é leve,
+              permitindo que eles fiquem alertas a qualquer movimento ou som,
+              mesmo enquanto descansam.
+            </li>
+            <li>
+              Os gatos têm uma visão noturna excepcional, permitindo que vejam
+              em ambientes com apenas 1/6 da luz necessária para que um humano
+              enxergue. Isso é devido à presença de uma estrutura chamada
+              "tapetum lucidum" em seus olhos, que reflete a luz e melhora a
+              visão em condições de pouca luz.
+            </li>
+            <li>
+              Os bigodes dos gatos não são apenas para estética. Eles são órgãos
+              sensoriais altamente sensíveis que ajudam os gatos a medir espaços
+              e detectar mudanças em seu ambiente, permitindo que percebam
+              objetos e até mesmo correntes de ar.
+            </li>
+          </ul>
         </div>
         <img src="./assets/images/gatinho-rosa2.png" alt="" />
       </section>
@@ -152,45 +157,113 @@
           <div class="selecao" id="div_selecao">
             <h1>Selecione o tipo de gato</h1>
             <div class="selecao-gatos">
-              <img src="./assets/gatinhos-selecao/rosa.gif" onclick="selecionarGato('rosa')" style="height: 90px; width: 90px; transform: translateY(40px); margin-right: 15px;" alt="">
-              <img src="./assets/gatinhos-selecao/calico2.gif" onclick="selecionarGato('calico')" style="height: 80px; width: 70px; transform: translateY(35px); margin-right: 15px;" alt="">
-              <img src="./assets/gatinhos-selecao/cinza.gif" onclick="selecionarGato('cinza')" alt="">
-              <img src="./assets/gatinhos-selecao/branco.gif" onclick="selecionarGato('branco')" alt="">
-              <img src="./assets/gatinhos-selecao/laranja.gif" onclick="selecionarGato('laranja')" alt="">
-              <img src="./assets/gatinhos-selecao/roxo.gif" onclick="selecionarGato('roxo')" alt="">
-              <img src="./assets/gatinhos-selecao/preto.gif" onclick="selecionarGato('preto')" alt="">
+              <img
+                src="./assets/gatinhos-selecao/rosa.gif"
+                onclick="selecionarGato('rosa')"
+                style="
+                  height: 90px;
+                  width: 90px;
+                  transform: translateY(40px);
+                  margin-right: 15px;
+                "
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/calico2.gif"
+                onclick="selecionarGato('calico')"
+                style="
+                  height: 80px;
+                  width: 70px;
+                  transform: translateY(35px);
+                  margin-right: 15px;
+                "
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/cinza.gif"
+                onclick="selecionarGato('cinza')"
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/branco.gif"
+                onclick="selecionarGato('branco')"
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/laranja.gif"
+                onclick="selecionarGato('laranja')"
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/roxo.gif"
+                onclick="selecionarGato('roxo')"
+                alt=""
+              />
+              <img
+                src="./assets/gatinhos-selecao/preto.gif"
+                onclick="selecionarGato('preto')"
+                alt=""
+              />
             </div>
           </div>
-          <div class="info-gato" id="div_info_gato" style="display: none;">
+          <div class="info-gato" id="div_info_gato">
             <a onclick="mostrarSelecao()">
               <i class="fas fa-arrow-left"></i>
             </a>
             <h1>Digite o nome do seu gato</h1>
             <div class="campos">
-              <input type="text" id="ipt_nome_gato">
+              <input type="text" id="ipt_nome_gato" />
               <ul class="generos">
                 <li class="genero masculino">
-                  <input type="radio" class="feminino" name="genero" id="masc" onclick="selecionarGenero('M')">
-                  <img class="check" src="assets/images/check-icon.png" alt="">
+                  <input
+                    type="radio"
+                    class="feminino"
+                    name="genero"
+                    id="masc"
+                    onclick="selecionarGenero('M')"
+                  />
+                  <img
+                    class="check"
+                    src="assets/images/check-icon.png"
+                    alt=""
+                  />
                   <label for="masc">Masculino</label>
                 </li>
                 <li class="genero feminino">
-                  <input type="radio" class="masculino" name="genero" id="fem" onclick="selecionarGenero('F')">
-                  <img class="check" src="assets/images/check-icon.png" alt="">
+                  <input
+                    type="radio"
+                    class="masculino"
+                    name="genero"
+                    id="fem"
+                    onclick="selecionarGenero('F')"
+                  />
+                  <img
+                    class="check"
+                    src="assets/images/check-icon.png"
+                    alt=""
+                  />
                   <label for="fem" class="icone-fem">Feminino</label>
                 </li>
               </ul>
               <button class="btn-criar" onclick="cadastrar()">Criar</button>
             </div>
           </div>
-          <div class="gato" style="display: none;">
+          <div class="gato" id="div_gato">
+            <div class="status">
+              <h1>Nome: <span id="nome_gato"></span></h1>
+              <h1>Genero: <span id="genero_gato"></span></h1>
+              <h1>
+                Fome: <span><progress></progress></span>
+              </h1>
+              <h1>Sede: <span id="sede_gato"></span></h1>
+            </div>
             <div class="gif"></div>
           </div>
         </div>
       </section>
       <section class="fale-conosco" id="fale-conosco">
         <div class="conteudo-fale-conosco">
-          <h1>Fale conosco</h1>
+          <h1>Mande um miado</h1>
         </div>
         <div class="card-fale-conosco">
           <div class="campos">
@@ -203,8 +276,16 @@
             <button>Enviar</button>
           </div>
         </div>
-        <img class="pixel-cat" src="./assets/images/pink-pixel-cat.png" alt="" />
-        <img class="pixel-cat2" src="./assets/images/pink-pixel-cat.png" alt="" />
+        <img
+          class="pixel-cat"
+          src="./assets/images/pink-pixel-cat.png"
+          alt=""
+        />
+        <img
+          class="pixel-cat2"
+          src="./assets/images/pink-pixel-cat.png"
+          alt=""
+        />
       </section>
       <footer>
         <div class="footer-container">
@@ -228,7 +309,7 @@
               </a>
               <span>|</span>
               <a href="#fale-conosco">
-                <li>Fale conosco</li>
+                <li>Mande um miado</li>
               </a>
             </ul>
           </nav>
@@ -249,13 +330,23 @@
     </main>
     <script>
       b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
-       
+
       const login = sessaoLogin;
       const saudacaoUsuario = saudacao;
 
-      if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+      let lista_gatos_cadastrados = [];
+
+      if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_GATO != null) {
         login.style.display = "none";
         saudacaoUsuario.style.display = "flex";
+      } else if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+        login.style.display = "none";
+        saudacaoUsuario.style.display = "flex";
+        div_selecao.style.display = "flex";
+      } else {
+        login.style.display = "flex";
+        saudacaoUsuario.style.display = "none";
+        div_selecao.style.display = "flex";
       }
 
       function sair() {
@@ -266,7 +357,7 @@
       var generoGato = "";
       var racaGato = "";
 
-      function selecionarGato(gato){
+      function selecionarGato(gato) {
         const selecao = div_selecao;
         const infoGato = div_info_gato;
 
@@ -276,9 +367,8 @@
       }
 
       function selecionarGenero(genero) {
-        generoGato = genero 
+        generoGato = genero;
       }
-
 
       function mostrarSelecao() {
         const selecao = div_selecao;
@@ -289,40 +379,148 @@
       }
 
       function cadastrar() {
-        var nomeGatoVar = ipt_nome_gato.value;
-        var generoVar = generoGato;
-        var racaVar = racaGato;
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+          var nomeGatoVar = ipt_nome_gato.value;
+          var generoVar = generoGato;
+          var racaVar = racaGato;
+          var donoVar = sessionStorage.ID_USUARIO;
 
-        fetch("/gatos/cadastrar", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-        nomeGatoServer: nomeGatoVar,
-        generoServer: generoVar,
-        racaServer: racaVar,
-        }),
-      })
-      .then(function (resposta) {
-        console.log("resposta: ", resposta);
-        racaGato = "";
-        masc.checked = false;
-        fem.checked = false;
-        ipt_nome_gato.value = "";
+          div_info_gato.style.display = "none";
+          div_gato.style.display = "flex";
 
-        if (resposta.ok) {
-          console.log(resposta);
+          for (let i = 0; i < lista_gatos_cadastrados.length; i++) {
+            if (lista_gatos_cadastrados[i].nomeGato == nomeGatoVar) {
+              alert("Esse gato já existe!");
+              return false;
+            }
+          }
+
+          fetch("/gatos/cadastrar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              nomeGatoServer: nomeGatoVar,
+              generoServer: generoVar,
+              racaServer: racaVar,
+              donoServer: donoVar,
+            }),
+          })
+            .then(function (resposta) {
+              console.log("resposta: ", resposta);
+              racaGato = "";
+              masc.checked = false;
+              fem.checked = false;
+              ipt_nome_gato.value = "";
+
+              if (resposta.ok) {
+                console.log(resposta);
+                console.log(donoVar);
+              } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+              }
+            })
+            .catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+            });
+
+          return false;
         } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
+          window.location = "/login.html";
         }
-      })
-      .catch(function (resposta) {
-        console.log(`#ERRO: ${resposta}`);
-      });
+      }
 
-      return false;
-    }
+      async function verificarGato() {
+        try {
+          const resposta = await fetch("/gatos/autenticar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              idDonoServer: sessionStorage.ID_USUARIO,
+            }),
+          });
+
+          if (!resposta.ok) {
+            throw new Error("Erro ao autenticar o gato!");
+          }
+
+          const json = await resposta.json();
+
+          console.log(json);
+          console.log(JSON.stringify(json));
+
+          sessionStorage.ID_GATO = json.id;
+          sessionStorage.NOME_GATO = json.nome;
+          sessionStorage.GENERO_GATO = json.genero;
+          sessionStorage.RACA_GATO = json.raca;
+
+          if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_GATO != null) {
+            const lista_racas = [
+              "rosa",
+              "calico",
+              "cinza",
+              "branco",
+              "laranja",
+              "roxo",
+              "preto",
+            ];
+
+            const lista_cores = [
+              "pink",
+              "brown",
+              "gray",
+              "white",
+              "orange",
+              "purple",
+              "black",
+            ];
+
+            let cor = 0;
+
+            const nomeGato = sessionStorage.NOME_GATO;
+            const generoGato = sessionStorage.GENERO_GATO;
+            const racaGato = sessionStorage.RACA_GATO;
+
+            div_selecao.style.display = "none";
+            div_info_gato.style.display = "none";
+            div_gato.style.display = "flex";
+
+            nome_gato.textContent = nomeGato;
+            genero_gato.textContent =
+            generoGato === "M" ? "Masculino" : "Feminino";
+
+            for (let i = 0; i < lista_racas.length; i++) {
+              if (racaGato === lista_racas[i]) {
+                cor = lista_cores[i];
+                break;
+              }
+            }
+
+            div_gato.style.backgroundColor = cor;
+          }
+        } catch (erro) {
+          console.log(`Erro: ${erro.message}`);
+        }
+      }
+
+      function listar() {
+        fetch("/gatos/listar", {
+          method: "GET",
+        })
+          .then(function (resposta) {
+            resposta.json().then((gatos) => {
+              gatos.forEach((gatos) => {
+                lista_gatos_cadastrados.push(gatos);
+              });
+            });
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+      }
     </script>
   </body>
 </html>
