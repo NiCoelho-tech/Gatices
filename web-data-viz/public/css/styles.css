@@ -19,47 +19,8 @@
   font-style: normal;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-style: normal;
-  cursor: default;
-}
-
 html {
   scroll-behavior: smooth;
-}
-
-a {
-  text-decoration: none;
-  color: #f0f0f0 !important;
-}
-
-a:hover {
-  text-decoration: none !important;
-  cursor: pointer !important;
-}
-
-ul {
-  list-style-type: none;
-  margin-bottom: 0 !important;
-}
-
-h1,
-h2 {
-  margin-bottom: 0 !important;
-}
-
-p {
-  margin-bottom: 0 !important;
-}
-
-.nes-btn,
-button,
-a,
-.nes-pointer {
-  cursor: pointer !important;
 }
 
 body {
@@ -74,57 +35,16 @@ main {
 
 header {
   display: flex !important;
-  justify-content: space-between;
+  justify-content: space-evenly;
   background-color: #4f5d75;
   border-bottom: 3px solid #ffb3c1;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
 
-.logo {
+header .logo {
   width: 110px;
   height: 110px;
-  margin-left: 30px;
-}
-
-.parallax {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
-  width: 100%;
-  position: relative;
-  background-position: 50% 50%;
-  background-repeat: no-repeat;
-  background-size: cover;
-}
-
-.parallax::after {
-  content: "";
-  height: 100%;
-  width: 100%;
-  position: absolute;
-  z-index: 8;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0) 0,
-    rgba(0, 0, 0, 0) 40%,
-    #000 100%
-  );
-}
-
-.parallax-bg {
-  background-image: url("../assets/images/gato.jpg");
-  background-size: cover;
-}
-
-.conteudo-inicio {
-  font-family: "VCR";
-  font-size: 15px;
-  color: #000;
-  text-align: center;
-  margin-top: 30px;
-  margin-bottom: 30px;
 }
 
 header ul {
@@ -211,7 +131,39 @@ header > img {
 .saudacao i:hover {
   color: #f495a9;
   cursor: pointer !important;
+  transform: scale(1.05);
   transition: 0.3s;
+}
+
+.parallax {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.parallax::after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 8;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 0,
+    rgba(0, 0, 0, 0) 40%,
+    #000 100%
+  );
+}
+
+.parallax-bg {
+  background-image: url("../assets/images/gato.jpg");
+  background-size: cover;
 }
 
 .inicio {
@@ -230,6 +182,15 @@ header > img {
     #fed1d7,
     #ffe5e8
   );
+}
+
+.conteudo-inicio {
+  font-family: "VCR";
+  font-size: 15px;
+  color: #000;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 .conteudo-inicio > h1 {
@@ -576,7 +537,6 @@ header > img {
   height: 100%;
   width: 100%;
   padding-top: 40px;
-  background-color: #f495a9;
   color: #5d576b;
   position: relative;
 }
