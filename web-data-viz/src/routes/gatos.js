@@ -8,6 +8,10 @@ router.post("/cadastrar", function (req, res) {
     gatoController.cadastrar(req, res);
 });
 
+router.post("/autenticar", function(req, res) {
+    gatoController.autenticar(req, res);
+})
+
 router.get("/listar", function(req, res) {
     gatoController.listar(req, res);
 }) 
