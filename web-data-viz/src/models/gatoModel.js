@@ -1,17 +1,29 @@
 var database = require("../database/config")
 
-function cadastrar(nome, genero, raca) {
-    console.log("ACESSEI O USUARIO MODEL \n \n\t\t >> Se aqui der erro de 'Error: connect ECONNREFUSED',\n \t\t >> verifique suas credenciais de acesso ao banco\n \t\t >> e se o servidor de seu BD está rodando corretamente. \n\n function cadastrar():", nome, genero, raca);
-    
-    // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
-    //  e na ordem de inserção dos dados.
+function autenticar(idDono) {
     var instrucaoSql = `
-        INSERT INTO gato (nome, genero, raca) VALUES ('${nome}', '${genero}', '${raca}');
+        SELECT id, nome, genero, raca FROM gato WHERE fkDono = '${idDono}';
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
 
+function cadastrar(nome, genero, raca, fkDono) {
+    var instrucaoSql = `
+        INSERT INTO gato (nome, genero, raca, fkDono) VALUES ('${nome}', '${genero}', '${raca}', '${fkDono}');
+    `;
+    console.log("Executando a instrução SQL: \n" + instrucaoSql);
+    return database.executar(instrucaoSql);
+}
+
+function listar() {
+    var instrucaoSql = `SELECT id, nome, genero, raca, fkDono FROM gato`;
+
+    return database.executar(instrucaoSql);
+}
+
 module.exports = {
-    cadastrar
+    cadastrar,
+    autenticar,
+    listar
 };
