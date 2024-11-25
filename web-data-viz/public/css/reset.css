@@ -1,0 +1,38 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-style: normal;
+  cursor: default;
+}
+
+a {
+  text-decoration: none;
+  color: #f0f0f0 !important;
+}
+
+a:hover {
+  text-decoration: none !important;
+  cursor: pointer !important;
+}
+
+ul {
+  list-style-type: none;
+  margin-bottom: 0 !important;
+}
+
+h1,
+h2 {
+  margin-bottom: 0 !important;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+.nes-btn,
+button,
+a,
+.nes-pointer {
+  cursor: pointer !important;
+}
