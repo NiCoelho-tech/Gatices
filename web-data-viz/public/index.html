@@ -250,14 +250,19 @@
           </div>
           <div class="gato" id="div_gato">
             <div class="status">
-              <h1>Nome: <span id="nome_gato"></span></h1>
-              <h1>Genero: <span id="genero_gato"></span></h1>
-              <h1>
-                Fome: <span><progress></progress></span>
-              </h1>
-              <h1>Sede: <span id="sede_gato"></span></h1>
+              <p>Nome: <span id="nome_gato"></span></p>
+              <p>Genero: <span id="genero_gato"></span></p>
+              <p>Raça: <span id="raca_gato"></span></p>
+              <p>
+                Fome: <div class="fome"><span class="fome_gato"></span></div>
+              </p>
+              <p>Sede: <div class="sede"><span class="sede_gato"></span></div></p>
             </div>
-            <div class="gif"></div>
+            <div class="gif andar-direita" id="gif_gato"></div>
+            <div class="botoes">
+              <button>Dar comida</button>
+              <button>Dar água</button>
+            </div>
           </div>
         </div>
       </section>
@@ -491,6 +496,7 @@
             nome_gato.textContent = nomeGato;
             genero_gato.textContent =
             generoGato === "M" ? "Masculino" : "Feminino";
+            raca_gato.textContent = racaGato;
 
             for (let i = 0; i < lista_racas.length; i++) {
               if (racaGato === lista_racas[i]) {
@@ -521,6 +527,64 @@
             console.log(`#ERRO: ${resposta}`);
           });
       }
+
+      const cat = document.getElementById("gif_gato");
+
+// Inicializando o tipo de gato
+let tipo = "rosa";
+
+// Função para atualizar dinamicamente a URL da sprite sheet
+function updateCatSprite(tipo, numero) {
+  const spriteSheet = `./assets/sprite-sheets/sheet-${tipo}/${numero}.png`;
+  cat.style.background = `url('${spriteSheet}') no-repeat`;
+  cat.style.backgroundSize = "536px 144px"; // Ajuste do tamanho da sprite sheet
+}
+
+// Lista de animações com suas respectivas classes e durações
+const animations = [
+  { className: "andar-direita", numero: 2, duration: 2000 }, // Caminhar para a direita
+  { className: "andar-direita-mais-um-pouco", numero: 2, duration: 2000 },
+  { className: "andar-para-o-meio-esquerda", numero: 2, duration: 2000 },
+  { className: "andar-para-o-meio-esquerda-mais-um-pouco", numero: 2, duration: 2000 },
+  { className: "andar-esquerda", numero: 2, duration: 2000 },
+  { className: "andar-esquerda-mais-um-pouco", numero: 2, duration: 2000 },
+  { className: "andar-para-o-meio-direita", numero: 2, duration: 2000 },
+  { className: "andar-para-o-meio-direita-mais-um-pouco", numero: 2, duration: 2000 },
+  { className: "parar", numero: 3, duration: 2000 }, // Caminhar para a esquerda
+  { className: "lamber", numero: 4, duration: 2000 }, // Caminhar para a esquerda
+];
+
+// Função para executar as animações em sequência
+function playSequence(element, animations) {
+  let currentIndex = 0;
+
+  function nextAnimation() {
+    if (currentIndex >= animations.length) {
+      currentIndex = 0; // Reinicia a sequência, se necessário
+    }
+
+    const { className, numero, duration } = animations[currentIndex];
+
+    // Atualiza a URL da sprite sheet com base na animação atual
+    updateCatSprite(tipo, numero);
+
+    // Remove a classe atual (forçando reinicialização da animação)
+    element.className = "gif";
+    // Adiciona a nova classe
+    element.classList.add(className);
+
+    // Agenda a próxima animação
+    setTimeout(() => {
+      currentIndex++;
+      nextAnimation();
+    }, duration);
+  }
+
+  nextAnimation(); // Inicia a sequência
+}
+
+// Inicia as animações ao carregar a página
+playSequence(cat, animations);
     </script>
   </body>
 </html>
