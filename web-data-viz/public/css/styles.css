@@ -530,6 +530,7 @@ header > img {
 }
 
 .gato {
+  position: relative;
   display: none;
   flex-direction: column;
   align-items: center;
@@ -538,26 +539,218 @@ header > img {
   width: 100%;
   padding-top: 40px;
   color: #5d576b;
+  border-radius: inherit;
   position: relative;
 }
 
 .gif {
-  width: 134px;
+  width: 130px;
   height: 144px;
-  background: url("../assets/sprite-sheets/sheet-rosa/2.png") no-repeat;
+  position: relative;
+  background-image: url("../assets/sprite-sheets/sheet-rosa/2.png");
+  background-repeat: no-repeat;
   background-size: 536px 144px;
-  animation: play 1.5s steps(4) forwards;
+  transform: translateX(0); /* Posição inicial */
 }
 
-@keyframes play {
+.andar-direita {
+  animation: andar-direita 2s steps(4) forwards infinite;
+}
+
+.andar-direita-mais-um-pouco {
+  animation: andar-direita-mais-um-pouco 2s steps(4) forwards infinite;
+}
+
+.andar-para-o-meio-esquerda {
+  animation: andar-para-o-meio-esquerda 2s steps(3) forwards infinite;
+}
+
+.andar-para-o-meio-esquerda-mais-um-pouco {
+  animation: andar-para-o-meio-esquerda-mais-um-pouco 2s steps(3) forwards infinite;
+}
+
+.andar-esquerda {
+  animation: andar-esquerda 2s steps(3) forwards infinite;
+}
+
+.andar-esquerda-mais-um-pouco {
+  animation: andar-esquerda-mais-um-pouco 2s steps(3) forwards infinite;
+}
+
+.andar-para-o-meio-direita {
+  animation: andar-para-o-meio-direita 2s steps(3) forwards infinite;
+}
+
+.andar-para-o-meio-direita-mais-um-pouco {
+  animation: andar-para-o-meio-direita-mais-um-pouco 2s steps(3) forwards infinite;
+}
+
+.parar,
+.lamber {
+  animation: parar 2s steps(4) forwards infinite;
+}
+
+@keyframes andar-direita {
   0% {
     background-position: 0 0;
     transform: translateX(0);
   }
   100% {
-    background-position: -536px 0;
-    transform: translateX(100px);
+    background-position: -520px 0; /* Usa o deslocamento total do sprite */
+    transform: translateX(140px); /* Move o gato para a direita */
   }
+}
+
+@keyframes andar-direita-mais-um-pouco {
+  0% {
+    background-position: 0 0; /* Reinicia os frames do sprite */
+    transform: translateX(140px); /* Começa de onde a primeira terminou */
+  }
+  100% {
+    background-position: -520px 0; /* Repete o deslocamento total */
+    transform: translateX(280px); /* Move mais 140px para a direita */
+  }
+}
+
+@keyframes andar-para-o-meio-esquerda {
+  0% {
+    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    transform: translateX(280px) scaleX(-1); /* Posição de onde parou */
+  }
+  100% {
+    background-position: 0 0; /* Movimento final para a esquerda */
+    transform: translateX(140px) scaleX(-1); /* Retorna para a posição inicial */
+  }
+}
+
+@keyframes andar-para-o-meio-esquerda-mais-um-pouco {
+  0% {
+    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    transform: translateX(140px) scaleX(-1); /* Posição de onde parou */
+  }
+  100% {
+    background-position: 0 0; /* Movimento final para a esquerda */
+    transform: translateX(0) scaleX(-1); /* Retorna para a posição inicial */
+  }
+}
+
+@keyframes andar-esquerda {
+  0% {
+    background-position: 0 0; /* Começa do último quadro de "andar-direita-mais-um-pouco" */
+    transform: translateX(0) scaleX(-1); /* Começa de onde terminou "andar-direita-mais-um-pouco" */
+  }
+  100% {
+    background-position: -402px 0; /* Volta ao início do sprite */
+    transform: translateX(-140px) scaleX(-1); /* Move para a esquerda */
+  }
+}
+
+@keyframes andar-esquerda-mais-um-pouco {
+  0% {
+    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    transform: translateX(-140px) scaleX(-1); /* Posição de onde parou */
+  }
+  100% {
+    background-position: 0 0; /* Movimento final para a esquerda */
+    transform: translateX(-280px) scaleX(-1); /* Retorna para a posição inicial */
+  }
+}
+
+@keyframes andar-para-o-meio-direita {
+  0% {
+    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    transform: translateX(-280px); /* Posição de onde parou */
+  }
+  100% {
+    background-position: 0 0; /* Movimento final para a esquerda */
+    transform: translateX(-140px); /* Retorna para a posição inicial */
+  }
+}
+
+@keyframes andar-para-o-meio-direita-mais-um-pouco {
+  0% {
+    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    transform: translateX(-140px); /* Posição de onde parou */
+  }
+  100% {
+    background-position: 0 0; /* Movimento final para a esquerda */
+    transform: translateX(0); /* Retorna para a posição inicial */
+  }
+}
+
+@keyframes parar {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -536px 0;
+  }
+}
+
+
+
+.gato .status {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 30px;
+}
+
+.gato .status {
+  position: absolute;
+  top: 0;
+  left: 20%;
+}
+
+.gato .status p {
+  font-family: "VCR", sans-serif;
+  font-size: 25px;
+
+}
+
+.gato .status .fome,
+.gato .status .sede {
+  height: 10px;
+  width: 250px;
+  border: 1px solid #000;
+  border-radius: 5px;
+} 
+
+.gato .status .fome_gato,
+.gato .status .sede_gato {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.gato .status .fome_gato {
+  background-color: #9b5a5a;
+}
+
+.gato .status .sede_gato {
+  background-color: #a0c1d1;
+}
+
+.gato .botoes {
+  position: absolute;
+  bottom: 5%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.gato .botoes button {
+  width: 120px;
+  height: 50px;
+  background-color: #f8edeb;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "VCR", sans-serif;
+  font-size: 17px;
 }
 
 .fale-conosco {
