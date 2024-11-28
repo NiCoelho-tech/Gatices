@@ -544,10 +544,9 @@ header > img {
 }
 
 .gif {
-  width: 130px;
+  width: 134px;
   height: 144px;
   position: relative;
-  background-image: url("../assets/sprite-sheets/sheet-rosa/2.png");
   background-repeat: no-repeat;
   background-size: 536px 144px;
   transform: translateX(0); /* Posição inicial */
@@ -562,27 +561,27 @@ header > img {
 }
 
 .andar-para-o-meio-esquerda {
-  animation: andar-para-o-meio-esquerda 2s steps(3) forwards infinite;
+  animation: andar-para-o-meio-esquerda 2s steps(4) forwards infinite;
 }
 
 .andar-para-o-meio-esquerda-mais-um-pouco {
-  animation: andar-para-o-meio-esquerda-mais-um-pouco 2s steps(3) forwards infinite;
+  animation: andar-para-o-meio-esquerda-mais-um-pouco 2s steps(4) forwards infinite;
 }
 
 .andar-esquerda {
-  animation: andar-esquerda 2s steps(3) forwards infinite;
+  animation: andar-esquerda 2s steps(4) forwards infinite;
 }
 
 .andar-esquerda-mais-um-pouco {
-  animation: andar-esquerda-mais-um-pouco 2s steps(3) forwards infinite;
+  animation: andar-esquerda-mais-um-pouco 2s steps(4) forwards infinite;
 }
 
 .andar-para-o-meio-direita {
-  animation: andar-para-o-meio-direita 2s steps(3) forwards infinite;
+  animation: andar-para-o-meio-direita 2s steps(4) forwards infinite;
 }
 
 .andar-para-o-meio-direita-mais-um-pouco {
-  animation: andar-para-o-meio-direita-mais-um-pouco 2s steps(3) forwards infinite;
+  animation: andar-para-o-meio-direita-mais-um-pouco 2s steps(4) forwards infinite;
 }
 
 .parar,
@@ -596,7 +595,7 @@ header > img {
     transform: translateX(0);
   }
   100% {
-    background-position: -520px 0; /* Usa o deslocamento total do sprite */
+    background-position: -536px 0; /* Usa o deslocamento total do sprite */
     transform: translateX(140px); /* Move o gato para a direita */
   }
 }
@@ -607,29 +606,29 @@ header > img {
     transform: translateX(140px); /* Começa de onde a primeira terminou */
   }
   100% {
-    background-position: -520px 0; /* Repete o deslocamento total */
+    background-position: -536px 0; /* Repete o deslocamento total */
     transform: translateX(280px); /* Move mais 140px para a direita */
   }
 }
 
 @keyframes andar-para-o-meio-esquerda {
   0% {
-    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    background-position: 0 0; /* Começa de onde a animação anterior parou */
     transform: translateX(280px) scaleX(-1); /* Posição de onde parou */
   }
   100% {
-    background-position: 0 0; /* Movimento final para a esquerda */
+    background-position: -536px 0; /* Movimento final para a esquerda */
     transform: translateX(140px) scaleX(-1); /* Retorna para a posição inicial */
   }
 }
 
 @keyframes andar-para-o-meio-esquerda-mais-um-pouco {
   0% {
-    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    background-position: 0 0; /* Começa de onde a animação anterior parou */
     transform: translateX(140px) scaleX(-1); /* Posição de onde parou */
   }
   100% {
-    background-position: 0 0; /* Movimento final para a esquerda */
+    background-position: -536px 0; /* Movimento final para a esquerda */
     transform: translateX(0) scaleX(-1); /* Retorna para a posição inicial */
   }
 }
@@ -640,40 +639,40 @@ header > img {
     transform: translateX(0) scaleX(-1); /* Começa de onde terminou "andar-direita-mais-um-pouco" */
   }
   100% {
-    background-position: -402px 0; /* Volta ao início do sprite */
+    background-position: -536px 0; /* Volta ao início do sprite */
     transform: translateX(-140px) scaleX(-1); /* Move para a esquerda */
   }
 }
 
 @keyframes andar-esquerda-mais-um-pouco {
   0% {
-    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    background-position: 0 0; /* Começa de onde a animação anterior parou */
     transform: translateX(-140px) scaleX(-1); /* Posição de onde parou */
   }
   100% {
-    background-position: 0 0; /* Movimento final para a esquerda */
+    background-position: -536px 0; /* Movimento final para a esquerda */
     transform: translateX(-280px) scaleX(-1); /* Retorna para a posição inicial */
   }
 }
 
 @keyframes andar-para-o-meio-direita {
   0% {
-    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    background-position: 0 0; /* Começa de onde a animação anterior parou */
     transform: translateX(-280px); /* Posição de onde parou */
   }
   100% {
-    background-position: 0 0; /* Movimento final para a esquerda */
+    background-position: -536px 0; /* Movimento final para a esquerda */
     transform: translateX(-140px); /* Retorna para a posição inicial */
   }
 }
 
 @keyframes andar-para-o-meio-direita-mais-um-pouco {
   0% {
-    background-position: -402px 0; /* Começa de onde a animação anterior parou */
+    background-position: 0 0; /* Começa de onde a animação anterior parou */
     transform: translateX(-140px); /* Posição de onde parou */
   }
   100% {
-    background-position: 0 0; /* Movimento final para a esquerda */
+    background-position: -536px 0; /* Movimento final para a esquerda */
     transform: translateX(0); /* Retorna para a posição inicial */
   }
 }
@@ -687,7 +686,97 @@ header > img {
   }
 }
 
+.gato .celular {
+  position: absolute;
+  top: 15%;
+  right: 15%;
+}
 
+.gato .celular img:hover {
+  cursor: pointer;
+  animation: vibrar .5s ease-in-out 1;
+}
+
+.gato .dashboard {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #7a4f4f;
+  z-index: 1;
+}
+
+.gato .dashboard .btn-fechar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 10px;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.gato .dashboard .btn-fechar i {
+  transition: 0.3s;
+}
+
+.gato .dashboard .btn-fechar i:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.gato .dashboard h2 {
+  margin-top: 20px;
+  font-family: "VCR";
+  font-size: 25px;
+  text-transform: uppercase;
+  color: #a0c1d1;
+  text-shadow: 1px 1px 2px #000;
+  align-self: center;
+}
+
+.container-grafico {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#myChartCanvas {
+  width: 500px !important;   /* Largura do gráfico */
+  height: 350px !important;  /* Altura do gráfico */
+}
+
+.kpis {
+  font-family: 'VCR', sans-serif;
+  width: 100px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 20px;
+  color: #000;
+}
+
+.kpis .fomeKPI,
+.kpis .sedeKPI {
+  height: 200px;
+  width: 150px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 20px;
+}
 
 .gato .status {
   position: relative;
@@ -715,6 +804,7 @@ header > img {
   width: 250px;
   border: 1px solid #000;
   border-radius: 5px;
+  overflow-x: hidden;
 } 
 
 .gato .status .fome_gato,
@@ -751,6 +841,13 @@ header > img {
   cursor: pointer;
   font-family: "VCR", sans-serif;
   font-size: 17px;
+  transition: .3s;
+}
+
+.gato .botoes button:hover {
+  background-color: #f495a9;
+  color: #fff;
+  transition: .3s;
 }
 
 .fale-conosco {
@@ -970,5 +1067,23 @@ footer p {
   }
   100% {
     transform: translateX(0px);
+  }
+}
+
+@keyframes vibrar {
+  0% {
+      transform: translateX(0);
+  }
+  25% {
+      transform: translateX(-10px);
+  }
+  50% {
+      transform: translateX(10px);
+  }
+  75% {
+      transform: translateX(-10px);
+  }
+  100% {
+      transform: translateX(0);
   }
 }

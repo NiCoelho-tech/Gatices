@@ -24,8 +24,13 @@
       href="https://unpkg.com/nes.css/css/nes-core.min.css"
       rel="stylesheet"
     />
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   </head>
-  <body onload="listar(); verificarGato()">
+  <body onload="listar(); verificarGato(); autenticarStatus(); 
+  obterDadosGrafico(sessionStorage.ID_GATO); 
+">
     <main>
       <header>
         <img class="logo" src="./assets/images/logo.png" alt="" />
@@ -249,19 +254,41 @@
             </div>
           </div>
           <div class="gato" id="div_gato">
+            <a onclick="mostrarDashboard()" class="celular">
+              <img src="./assets//images/celular.png" style="width: 70px; height: 70px" alt="">
+            </a>
+            <div class="dashboard" id="dashboard" style="display: none;">
+              <a class="btn-fechar" onclick="fecharDashboard()">
+                <i class="fa-solid fa-circle-xmark"></i>
+              </a>
+              <h2>Monitoramento de Fome e Sede</h2>
+              <div class="container-grafico">
+                  <canvas id="myChartCanvas"></canvas>
+                  <div class="kpis">
+                    <div class="fomeKPI" id="fomeKPI">
+                      <p>Fome atual:</p>
+                      <div class="kpiFome"><span class="indicador_fome" id="indicador_fome"></span></div>
+                    </div>
+                    <div class="sedeKPI" id="sedeKPI">
+                      <p>Sede atual:</p>
+                      <div class="kpiSede"><span class="indicador_sede" id="indicador_sede"></span></div>
+                    </div>
+                </div>
+              </div>
+            </div>
             <div class="status">
               <p>Nome: <span id="nome_gato"></span></p>
               <p>Genero: <span id="genero_gato"></span></p>
               <p>Raça: <span id="raca_gato"></span></p>
               <p>
-                Fome: <div class="fome"><span class="fome_gato"></span></div>
+                Fome: <div class="fome"><span class="fome_gato" id="fome_gato"></span></div>
               </p>
-              <p>Sede: <div class="sede"><span class="sede_gato"></span></div></p>
+              <p>Sede: <div class="sede"><span class="sede_gato" id="sede_gato"></span></div></p>
             </div>
             <div class="gif andar-direita" id="gif_gato"></div>
             <div class="botoes">
-              <button>Dar comida</button>
-              <button>Dar água</button>
+              <button onclick="darComida()">Dar comida</button>
+              <button onclick="darAgua()">Dar água</button>
             </div>
           </div>
         </div>
@@ -384,57 +411,66 @@
       }
 
       function cadastrar() {
-        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
-          var nomeGatoVar = ipt_nome_gato.value;
-          var generoVar = generoGato;
-          var racaVar = racaGato;
-          var donoVar = sessionStorage.ID_USUARIO;
+  if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+    var nomeGatoVar = ipt_nome_gato.value;
+    var generoVar = generoGato;
+    var racaVar = racaGato;
+    var donoVar = sessionStorage.ID_USUARIO;
 
-          div_info_gato.style.display = "none";
-          div_gato.style.display = "flex";
+    div_info_gato.style.display = "none";
+    div_gato.style.display = "flex";
 
-          for (let i = 0; i < lista_gatos_cadastrados.length; i++) {
-            if (lista_gatos_cadastrados[i].nomeGato == nomeGatoVar) {
-              alert("Esse gato já existe!");
-              return false;
-            }
-          }
-
-          fetch("/gatos/cadastrar", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              nomeGatoServer: nomeGatoVar,
-              generoServer: generoVar,
-              racaServer: racaVar,
-              donoServer: donoVar,
-            }),
-          })
-            .then(function (resposta) {
-              console.log("resposta: ", resposta);
-              racaGato = "";
-              masc.checked = false;
-              fem.checked = false;
-              ipt_nome_gato.value = "";
-
-              if (resposta.ok) {
-                console.log(resposta);
-                console.log(donoVar);
-              } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-              }
-            })
-            .catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-            });
-
-          return false;
-        } else {
-          window.location = "/login.html";
-        }
+    for (let i = 0; i < lista_gatos_cadastrados.length; i++) {
+      if (lista_gatos_cadastrados[i].nomeGato == nomeGatoVar) {
+        alert("Esse gato já existe!");
+        return false;
       }
+    }
+
+    fetch("/gatos/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nomeGatoServer: nomeGatoVar,
+        generoServer: generoVar,
+        racaServer: racaVar,
+        donoServer: donoVar,
+      }),
+    })
+      .then(function (resposta) {
+        if (resposta.ok) {
+          return resposta.json(); // Transformar a resposta em JSON
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .then(function (dadosGato) {
+        console.log("Gato cadastrado:", dadosGato);
+
+        // Atualizar sessionStorage com os dados do gato cadastrado
+        sessionStorage.ID_GATO = dadosGato.id;
+        sessionStorage.NOME_GATO = dadosGato.nome;
+        sessionStorage.RACA_GATO = dadosGato.raca;
+        sessionStorage.GENERO_GATO = dadosGato.genero;
+
+        // Atualizar lista local (se necessário)
+        lista_gatos_cadastrados.push(dadosGato);
+
+        // Chamar verificarGato para garantir consistência
+        verificarGato();
+      })
+      .catch(function (erro) {
+        console.log(`#ERRO: ${erro}`);
+      });
+
+    return false;
+  } else {
+    window.location = "/login.html";
+  }
+}
+
 
       async function verificarGato() {
         try {
@@ -462,7 +498,21 @@
           sessionStorage.GENERO_GATO = json.genero;
           sessionStorage.RACA_GATO = json.raca;
 
-          if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_GATO != null) {
+          if (sessionStorage.FOME_GATO == 0 || sessionStorage.SEDE_GATO == 0) {
+            sessionStorage.STATUS_VIDA = "MORTO";
+          }
+          
+          if (sessionStorage.STATUS_VIDA == "MORTO") {
+          sessionStorage.removeItem("STATUS_VIDA");
+                sessionStorage.removeItem("FOME_GATO");
+                sessionStorage.removeItem("SEDE_GATO");
+                sessionStorage.removeItem("DT_HORA");
+                sessionStorage.removeItem("NOME_GATO");
+                sessionStorage.removeItem("RACA_GATO");
+                sessionStorage.removeItem("GENERO_GATO");
+              
+                // div_gato.style.display = "none";
+        } else if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO && sessionStorage.ID_GATO != null) {
             const lista_racas = [
               "rosa",
               "calico",
@@ -506,7 +556,57 @@
             }
 
             div_gato.style.backgroundColor = cor;
+
+            const cat = document.getElementById("gif_gato");
+
+            let tipo = racaGato;
+
+            function updateCatSprite(tipo, numero) {
+              const spriteSheet = `./assets/sprite-sheets/sheet-${tipo}/${numero}.png`;
+              cat.style.background = `url('${spriteSheet}') no-repeat`;
+              cat.style.backgroundSize = "536px 124px"; 
+            }
+
+            const animations = [
+              { className: "andar-direita", numero: 1, duration: 2000 }, 
+              { className: "andar-direita-mais-um-pouco", numero: 1, duration: 2000 },
+              { className: "andar-para-o-meio-esquerda", numero: 1, duration: 2000 },
+              { className: "andar-para-o-meio-esquerda-mais-um-pouco", numero: 1, duration: 2000 },
+              { className: "andar-esquerda", numero: 1, duration: 2000 },
+              { className: "andar-esquerda-mais-um-pouco", numero: 1, duration: 2000 },
+              { className: "andar-para-o-meio-direita", numero: 1, duration: 2000 },
+              { className: "andar-para-o-meio-direita-mais-um-pouco", numero: 1, duration: 2000 },
+              { className: "parar", numero: 2, duration: 2000 }, 
+              { className: "lamber", numero: 3, duration: 2000 }, 
+            ];
+
+            function playSequence(element, animations) {
+              let currentIndex = 0;
+
+              function nextAnimation() {
+                if (currentIndex >= animations.length) {
+                  currentIndex = 0; 
+                }
+
+                const { className, numero, duration } = animations[currentIndex];
+
+                updateCatSprite(tipo, numero);
+
+                element.className = "gif";
+                element.classList.add(className);
+
+                setTimeout(() => {
+                  currentIndex++;
+                  nextAnimation();
+                }, duration);
+              }
+
+              nextAnimation(); 
+            }
+
+            playSequence(cat, animations);
           }
+          
         } catch (erro) {
           console.log(`Erro: ${erro.message}`);
         }
@@ -528,63 +628,490 @@
           });
       }
 
-      const cat = document.getElementById("gif_gato");
+      let fome = sessionStorage.FOME_GATO !== undefined ? parseInt(sessionStorage.FOME_GATO) : 100;
+      let sede = sessionStorage.SEDE_GATO !== undefined ? parseInt(sessionStorage.SEDE_GATO) : 100;
+      let intervaloStatus; // Identificador do intervalo
 
-// Inicializando o tipo de gato
-let tipo = "rosa";
+      // Função para iniciar o intervalo
+      function iniciarIntervalo() {
+        if (!intervaloStatus) { // Inicia o intervalo apenas uma vez
+          intervaloStatus = setInterval(atualizarStatus, 10000);
+        }
+      }
 
-// Função para atualizar dinamicamente a URL da sprite sheet
-function updateCatSprite(tipo, numero) {
-  const spriteSheet = `./assets/sprite-sheets/sheet-${tipo}/${numero}.png`;
-  cat.style.background = `url('${spriteSheet}') no-repeat`;
-  cat.style.backgroundSize = "536px 144px"; // Ajuste do tamanho da sprite sheet
+      iniciarIntervalo();
+
+      
+      function darComida() {
+        fome = Math.min(fome + 15, 100);
+        sede = Math.max(sede - 3, 0);
+
+        sessionStorage.FOME_GATO = fome;
+        sessionStorage.SEDE_GATO = sede;
+
+        console.log(sessionStorage.STATUS_VIDA, sessionStorage.DT_HORA)
+
+        atualizarStatus()
+      }
+
+      function darAgua() {
+        sede = Math.min(sede + 15, 100);
+        fome = Math.max(fome - 3, 0);
+
+        sessionStorage.FOME_GATO = fome;
+        sessionStorage.SEDE_GATO = sede;
+
+        console.log(sessionStorage.SEDE_GATO)
+
+        atualizarStatus()
+      }
+
+      let historicoFome = [];
+      let historicoSede = [];
+
+function cadastrarStatus() {
+    var idGato = sessionStorage.ID_GATO;
+
+    if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+        var fomeVar = fome;
+        var sedeVar = sede;
+
+        fetch("/gatoStatus/cadastrar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                fomeGatoServer: fomeVar,
+                sedeGatoServer: sedeVar,
+                gatoIdServer: idGato,
+                donoIdServer: sessionStorage.ID_USUARIO,
+            }),
+        })
+        .then(function (resposta) {
+            if (resposta.ok) {
+                console.log(resposta);
+            } else {
+                throw "Erro ao cadastrar o status!";
+            }
+        })
+        .catch(function (erro) {
+            console.log(`#ERRO: ${erro}`);
+        });
+
+        return false;
+    } else {
+        return false;
+    }
 }
 
-// Lista de animações com suas respectivas classes e durações
-const animations = [
-  { className: "andar-direita", numero: 2, duration: 2000 }, // Caminhar para a direita
-  { className: "andar-direita-mais-um-pouco", numero: 2, duration: 2000 },
-  { className: "andar-para-o-meio-esquerda", numero: 2, duration: 2000 },
-  { className: "andar-para-o-meio-esquerda-mais-um-pouco", numero: 2, duration: 2000 },
-  { className: "andar-esquerda", numero: 2, duration: 2000 },
-  { className: "andar-esquerda-mais-um-pouco", numero: 2, duration: 2000 },
-  { className: "andar-para-o-meio-direita", numero: 2, duration: 2000 },
-  { className: "andar-para-o-meio-direita-mais-um-pouco", numero: 2, duration: 2000 },
-  { className: "parar", numero: 3, duration: 2000 }, // Caminhar para a esquerda
-  { className: "lamber", numero: 4, duration: 2000 }, // Caminhar para a esquerda
-];
+      async function autenticarStatus() {
+        try {
+          const resposta = await fetch("/gatoStatus/autenticar", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            credentials: "include",
+            body: JSON.stringify({
+              gatoIdServer: sessionStorage.ID_GATO,
+              donoIdServer: sessionStorage.ID_USUARIO,
+            }),
+          });
 
-// Função para executar as animações em sequência
-function playSequence(element, animations) {
-  let currentIndex = 0;
+          if (!resposta.ok) {
+            throw new Error("Erro ao autenticar o gato!");
+            console.log(resposta);
+          }
 
-  function nextAnimation() {
-    if (currentIndex >= animations.length) {
-      currentIndex = 0; // Reinicia a sequência, se necessário
+          const json = await resposta.json();
+
+          console.log(json);
+          console.log(JSON.stringify(json));
+          console.log(Object.keys(json));
+
+          sessionStorage.FOME_GATO = json.fome;
+          sessionStorage.SEDE_GATO = json.sede;
+          sessionStorage.DT_HORA = json.dtHora;
+          sessionStorage.STATUS_VIDA = json.status_vida;
+
+          historicoFome.push(json.fome);
+          historicoSede.push(json.sede);
+          
+          atualizarStatus();
+        } catch (erro) {
+          console.log(erro);
+          console.log("Erro ao autenticar o gato!");
+        } 
+      }
+
+      function atualizarStatus() {
+          cadastrarStatus();
+         if (sessionStorage.STATUS_VIDA == 'VIVO') {
+          cadastrarStatus();
+          // Verifica a fome e a sede do gato e atualiza o status
+          if (fome > 0) fome -= 1;
+          if (sede > 0) sede -= 1;
+  
+          // Atualiza as barras de fome e sede na tela
+          fome_gato.style.width = Math.max(fome, 0) + "%";
+          sede_gato.style.width = Math.max(sede, 0) + "%";
+  
+          // Armazena o status no sessionStorage
+          sessionStorage.FOME_GATO = fome;
+          sessionStorage.SEDE_GATO = sede;
+
+          indicador_fome.innerHTML = sessionStorage.FOME_GATO;
+          indicador_sede.innerHTML = sessionStorage.SEDE_GATO;
+        }
+        
+
+          if (fome == 0 || sede == 0 || sessionStorage.STATUS_VIDA == "MORTO") { 
+          clearInterval(intervaloStatus);         
+          deletar();
+          mostrarSelecao();
+          cadastrarStatus();
+          // div_gato.style.display = "none";
+        }
+
+        if (sessionStorage.STATUS_VIDA == 'MORTO') {
+          fome = 0;
+          sede = 0;
+        }
+      }
+
+      function deletar() {
+        fetch("/gatoStatus/deletar", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            donoIdServer: sessionStorage.ID_USUARIO,
+          }),
+        })
+          .then(function (resposta) {
+
+            sessionStorage.STATUS_VIDA = 'MORTO';
+
+            if (resposta.ok) {
+              console.log(resposta);
+            } else {
+              throw "Houve um erro ao tentar 'deletar'!";
+            }
+          })
+          .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+          });
+      }
+
+      function mostrarDashboard() {
+        dashboard.style.display = "flex";
+      }
+
+      function fecharDashboard() {
+        dashboard.style.display = "none";
+      }
+
+      let proximaAtualizacao;
+
+      var idGato = sessionStorage.ID_GATO;
+
+      function obterDadosGrafico(idGato) {
+
+        if (proximaAtualizacao != undefined) {
+            clearTimeout(proximaAtualizacao);
+        }
+
+        fetch(`/medida/tempo-real/${idGato}`, { cache: 'no-store' }).then(function (response) {
+            if (response.ok) {
+                response.json().then(function (resposta) {
+                    console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
+                    resposta.reverse();
+
+                    plotarGrafico(resposta, idGato);
+
+                });
+            } else {
+                console.error('Nenhum dado encontrado ou erro na API');
+            }
+        })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        }
+
+        function plotarGrafico(resposta, idGato) {
+
+          console.log(resposta);
+
+          console.log('iniciando plotagem do gráfico...');
+
+          // Criando estrutura para plotar gráfico - labels
+          let labels = [];
+
+          // Criando estrutura para plotar gráfico - dados
+          let dados = {
+          labels: [],
+          datasets: [
+          {
+              label: 'Fome',
+              data: [],
+              fill: false,
+              borderColor: '#ffb3c1',
+              tension: 0.1
+          },
+          {
+              label: 'Sede',
+              data: [],
+              fill: false,
+              borderColor: '#ffb3c1',
+              fontSize: 10,
+              color: '#ffb3c1',
+              tension: 0.1
+          },
+          ]
+          };
+
+
+          console.log('----------------------------------------------')
+          console.log('Estes dados foram recebidos pela funcao "obterDadosGrafico" e passados para "plotarGrafico":')
+          console.log(resposta)
+
+          // Inserindo valores recebidos em estrutura para plotar o gráfico
+          for (i = 0; i < resposta.length; i++) {
+              var registro = resposta[i];
+              var dataHora = registro['Data e Hora'];
+
+              var dataConvertida = new Date(dataHora);
+
+              if (isNaN(dataConvertida)) {
+                console.error(`Data inválida: ${dataHora}`);
+              } else {
+                labels.push(dataConvertida);
+                dados.labels.push(dataConvertida);
+                dados.datasets[0].data.push(registro.Fome);
+                dados.datasets[1].data.push(registro.Sede);
+              }
+          }
+
+          console.log('----------------------------------------------')
+          console.log('O gráfico será plotado com os respectivos valores:')
+          console.log('Labels:')
+          console.log(labels)
+          console.log('Dados:')
+          console.log(dados.datasets)
+          console.log('----------------------------------------------')
+
+          // Criando estrutura para plotar gráfico - config
+          if (dados.labels.length > 0) {
+            const config = {
+                type: 'bar',  // Alterado de 'line' para 'bar'
+                data: dados,
+                options: {
+                    responsive: true,
+                    elements: {
+                        bar: {
+                          borderWidth: 2, // Espessura da borda das barras
+                          borderColor: '#ffb3c1', // Cor da borda das barras
+                          backgroundColor: '#ffb3c1', // Cor de preenchimento das barras (translúcido)
+                          shadowColor: '#ffb3c1', // Cor da sombra
+                          shadowBlur: 10, // Difusão da sombra
+                          shadowOffsetX: 4, // Deslocamento da sombra no eixo X
+                          shadowOffsetY: 4, // Deslocamento da sombra no eixo Y
+                        },
+                    },
+                    plugins: {
+                        tooltip: {
+                            bodyColor: 'rgb(0, 0, 0)', // Cor do texto do corpo do tooltip
+                            titleColor: '#ffb3c1', // Cor do título do tooltip
+                            bodyFont: {
+                                family: 'VCR', // Fonte personalizada para o corpo do tooltip
+                            },
+                            titleFont: {
+                                family: 'VCR', // Fonte personalizada para o título do tooltip
+                            },
+                        },
+                        legend: {
+                            labels: {
+                                color: '#f495a9', // Cor do texto da legenda
+                                font: {
+                                    family: 'VCR',
+                                    size: 20, // Fonte personalizada para legenda
+                                },
+                            },
+                        },
+                    },
+                    scales: {
+                        x: {
+                            type: 'time', // Eixo X como tempo
+                            time: {
+                                unit: 'minute', // Unidade de tempo (ajuste conforme necessário)
+                                tooltipFormat: 'll HH:mm', // Formato do tooltip
+                            },
+                            title: {
+                                display: true,
+                                text: 'Data e Hora',
+                                color: '#ffb3c1', // Cor do título do eixo X
+                                font: {
+                                    size: 25, // Tamanho da fonte do título
+                                    family: 'VCR', // Fonte personalizada para o título do eixo X
+                                },
+                            },
+                            ticks: {
+                                color: 'rgb(255, 99, 132)', // Cor do texto no eixo X
+                                font: {
+                                    family: 'VCR', // Fonte personalizada para os ticks do eixo X
+                                },
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Valor',
+                                color: '#f495a9', // Cor do título do eixo Y
+                                font: {
+                                    size: 25, // Tamanho da fonte do título
+                                    family: 'VCR', // Fonte personalizada para o título do eixo Y
+                                },
+                            },
+                            ticks: {
+                                color: '#f495a9', // Cor do texto no eixo Y
+                                font: {
+                                    size: 15,
+                                    family: 'VCR', // Fonte personalizada para os ticks do eixo Y
+                                },
+                            },
+                        },
+                    },
+                },
+            };
+
+            // Criar o gráfico
+            let myChart = new Chart(
+                document.getElementById(`myChartCanvas`),
+                config
+            );
+
+            // Iniciar o loop de atualização
+            setTimeout(() => atualizarGrafico(idGato, dados, myChart), 2000);
+        } else {
+            console.error("Não há dados para preencher o gráfico.");
+        }
     }
 
-    const { className, numero, duration } = animations[currentIndex];
+          function atualizarGrafico(idGato, dados, myChart) {
+            fetch(`/medida/tempo-real/${idGato}`, { cache: 'no-store' }).then(function (response) {
+                if (response.ok) {
+                    response.json().then(function (novoRegistro) {
+                        console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
+                        console.log(`Dados atuais do gráfico:`);
+                        console.log(dados);
 
-    // Atualiza a URL da sprite sheet com base na animação atual
-    updateCatSprite(tipo, numero);
+                        // Verifique se há dados no gráfico antes de fazer qualquer comparação
+                        if (dados.labels.length > 0) {
+                            const lastLabel = dados.labels[dados.labels.length - 1];
+                            console.log('Última label:', lastLabel);
 
-    // Remove a classe atual (forçando reinicialização da animação)
-    element.className = "gif";
-    // Adiciona a nova classe
-    element.classList.add(className);
+                            // Se o novo dado já estiver no gráfico, não faz sentido atualizar
+                            if (novoRegistro[0]['Data e Hora'] == lastLabel) {
+                                console.log("Não há dados novos para atualização.");
+                            } else {
+                                // Atualize os dados do gráfico
+                                dados.labels.shift();  // Remove o primeiro
+                                dados.labels.push(new Date(novoRegistro[0]['Data e Hora']));  // Adiciona o novo valor
 
-    // Agenda a próxima animação
-    setTimeout(() => {
-      currentIndex++;
-      nextAnimation();
-    }, duration);
-  }
+                                dados.datasets[0].data.shift();  // Remove o primeiro de Fome
+                                dados.datasets[0].data.push(novoRegistro[0].Fome);  // Adiciona a nova medida de Fome
 
-  nextAnimation(); // Inicia a sequência
-}
+                                dados.datasets[1].data.shift();  // Remove o primeiro de Sede
+                                dados.datasets[1].data.push(novoRegistro[0].Sede);  // Adiciona a nova medida de Sede
 
-// Inicia as animações ao carregar a página
-playSequence(cat, animations);
+                                myChart.update();
+                            }
+                        } else {
+                            console.error("Não há dados para comparar.");
+                        }
+
+                        // Atualiza o gráfico periodicamente
+                        proximaAtualizacao = setTimeout(() => atualizarGrafico(idGato, dados, myChart), 2000);
+                    });
+                } else {
+                    console.error('Nenhum dado encontrado ou erro na API');
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idGato, dados, myChart), 2000);
+                }
+            })
+            .catch(function (error) {
+                console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
+            });
+        }
+
+
+//       function atualizarDashboard() {
+//     let fome = sessionStorage.FOME_GATO !== undefined ? parseInt(sessionStorage.FOME_GATO) : 100;
+//     let sede = sessionStorage.SEDE_GATO !== undefined ? parseInt(sessionStorage.SEDE_GATO) : 100;
+
+//     // Adicionar os valores de fome e sede aos históricos
+//     historicoFome.push(fome);
+//     historicoSede.push(sede);
+
+//     // Manter o histórico limitado para não sobrecarregar a memória
+//     if (historicoFome.length > 20) historicoFome.shift(); // Limita o histórico a 20 entradas
+//     if (historicoSede.length > 20) historicoSede.shift();
+
+//     const data = {
+//         labels: Array.from({ length: historicoFome.length }, (_, i) => `Entrada ${i + 1}`), // Marcação de entradas
+//         datasets: [{
+//             label: 'Fome',
+//             data: historicoFome, // Dados históricos de Fome
+//             backgroundColor: '#f495a9',
+//             borderColor: '#d87e93',
+//             borderWidth: 1,
+//             fill: false // Não preenche a área abaixo da linha
+//         }, {
+//             label: 'Sede',
+//             data: historicoSede, // Dados históricos de Sede
+//             backgroundColor: '#f8a9b8',
+//             borderColor: '#f1a4bb',
+//             borderWidth: 1,
+//             fill: false // Não preenche a área abaixo da linha
+//         }]
+//     };
+
+//     const ctx = document.getElementById('grafico').getContext('2d');
+
+   
+//     // Cria um novo gráfico com os dados atualizados
+//     window.grafico = new Chart(ctx, {
+//         type: 'line', // Tipo de gráfico em linha
+//         data: data,
+//         options: {
+//             responsive: true,
+//             scales: {
+//                 x: {
+//                     title: {
+//                         display: true,
+//                         text: 'Entradas'
+//                     }
+//                 },
+//                 y: {
+//                     beginAtZero: true,
+//                     title: {
+//                         display: true,
+//                         text: 'Intensidade'
+//                     }
+//                 }
+//             },
+//             animation: {
+//                 duration: 0 // Desativa animações para mudanças rápidas
+//             }
+//         }
+//       });
+// }
+
+// // Chama a função para atualizar o gráfico a cada 1 segundo
+// setInterval(atualizarDashboard, 1000);
+
     </script>
   </body>
 </html>

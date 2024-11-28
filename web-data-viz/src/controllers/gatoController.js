@@ -39,6 +39,7 @@ function autenticar(req, res) {
             nome: resultadoAutenticar[0].nome,
             genero: resultadoAutenticar[0].genero,
             raca: resultadoAutenticar[0].raca,
+            status_vida: resultadoAutenticar[0].status_vida
           });
         } else if (resultadoAutenticar.length == 0) {
           res.status(403).send("Gato não encontrado!");
