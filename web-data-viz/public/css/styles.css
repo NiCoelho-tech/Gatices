@@ -686,6 +686,28 @@ header > img {
   }
 }
 
+.gato .container-celular {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.gato .container-celular span {
+  display: flex;
+  justify-content: center;
+  align-items: center;  
+  width: 25px;
+  height: 25px; 
+  position: absolute;
+  top: 14%;
+  right: 16%;
+  background-color: rgb(221, 19, 19);
+  z-index: 1;
+  border-radius: 50%;
+  color: #fff;
+  font-family: 'VCR', sans-serif; 
+}
+
 .gato .celular {
   position: absolute;
   top: 15%;
@@ -747,8 +769,8 @@ header > img {
 }
 
 #myChartCanvas {
-  width: 500px !important;   /* Largura do gráfico */
-  height: 350px !important;  /* Altura do gráfico */
+  width: 100% !important;   /* Largura do gráfico */
+  height: 100% !important;  /* Altura do gráfico */
 }
 
 .kpis {
@@ -770,6 +792,7 @@ header > img {
   width: 150px;
   background-color: #fff;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -838,6 +861,7 @@ header > img {
   color: #000;
   border: 2px solid #000;
   border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   cursor: pointer;
   font-family: "VCR", sans-serif;
   font-size: 17px;
