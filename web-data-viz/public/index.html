@@ -820,6 +820,7 @@
       }
 
       function mostrarDashboard() {
+        obterDadosGrafico(sessionStorage.ID_GATO); 
         dashboard.style.display = "flex";
         notificacoes = 0;
         notificacao.style.display = "none";
@@ -1060,7 +1061,6 @@
           verificarGato(); 
           cadastrarStatus(); 
           autenticarStatus(); 
-          obterDadosGrafico(sessionStorage.ID_GATO); 
         }
     </script>
   </body>
