@@ -28,9 +28,7 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
   </head>
-  <body onload="listar(); verificarGato(); autenticarStatus(); 
-  obterDadosGrafico(sessionStorage.ID_GATO); 
-">
+  <body>
     <main>
       <header>
         <img class="logo" src="./assets/images/logo.png" alt="" />
@@ -254,16 +252,21 @@
             </div>
           </div>
           <div class="gato" id="div_gato">
-            <a onclick="mostrarDashboard()" class="celular">
-              <img src="./assets//images/celular.png" style="width: 70px; height: 70px" alt="">
-            </a>
+            <div class="container-celular">
+              <span class="notificacao" id="notificacao" style="display: none;"></span>
+              <a onclick="mostrarDashboard()" class="celular">
+                <img src="./assets//images/celular.png" style="width: 70px; height: 70px" alt="">
+              </a>
+            </div>
             <div class="dashboard" id="dashboard" style="display: none;">
               <a class="btn-fechar" onclick="fecharDashboard()">
                 <i class="fa-solid fa-circle-xmark"></i>
               </a>
               <h2>Monitoramento de Fome e Sede</h2>
               <div class="container-grafico">
-                  <canvas id="myChartCanvas"></canvas>
+                <div class="grafico" style="width: 50%; height: 400px;">
+                  <canvas id="myChartCanvas" width="400" height="300"></canvas>
+                </div>
                   <div class="kpis">
                     <div class="fomeKPI" id="fomeKPI">
                       <p>Fome atual:</p>
@@ -298,15 +301,15 @@
           <h1>Mande um miado</h1>
         </div>
         <div class="card-fale-conosco">
-          <div class="campos">
-            <p>Nome:</p>
-            <input type="text" /><br />
-            <p>Email:</p>
-            <input type="email" /><br />
-            <p>Mensagem:</p>
-            <textarea name="" id=""></textarea><br />
-            <button>Enviar</button>
-          </div>
+              <form class="campos" method="POST" action="https://getform.io/f/bwnnvzla" target="_blank">
+              <p>Nome:</p>
+              <input type="text" name="name" id="ipt_name"/><br />
+              <p>Email:</p>
+              <input type="email" name="email" id="ipt_email"/><br />
+              <p>Mensagem:</p>
+              <textarea name="message" id="ipt_message"></textarea><br />
+              <button type="submit">Enviar</button>
+            </form>
         </div>
         <img
           class="pixel-cat"
@@ -346,13 +349,13 @@
             </ul>
           </nav>
           <div class="social">
-            <a href="">
+            <a href="" target="_blank">
               <i class="fa-brands fa-linkedin"></i>
             </a>
-            <a href="https://instagram.com/nic.cs_">
+            <a href="https://instagram.com/nic.cs_" target="_blank">
               <i class="fa-brands fa-instagram"></i>
             </a>
-            <a href="https://github.com/NiCoelho-tech">
+            <a href="https://github.com/NiCoelho-tech" target="_blank">
               <i class="fa-brands fa-github"></i>
             </a>
           </div>
@@ -361,6 +364,10 @@
       </footer>
     </main>
     <script>
+      ipt_name.value = "";
+      ipt_email.value = "";
+      ipt_message.value = "";
+
       b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
       const login = sessaoLogin;
@@ -411,7 +418,7 @@
       }
 
       function cadastrar() {
-  if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+      if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
     var nomeGatoVar = ipt_nome_gato.value;
     var generoVar = generoGato;
     var racaVar = racaGato;
@@ -449,17 +456,14 @@
       .then(function (dadosGato) {
         console.log("Gato cadastrado:", dadosGato);
 
-        // Atualizar sessionStorage com os dados do gato cadastrado
         sessionStorage.ID_GATO = dadosGato.id;
         sessionStorage.NOME_GATO = dadosGato.nome;
         sessionStorage.RACA_GATO = dadosGato.raca;
         sessionStorage.GENERO_GATO = dadosGato.genero;
 
-        // Atualizar lista local (se necessário)
         lista_gatos_cadastrados.push(dadosGato);
 
-        // Chamar verificarGato para garantir consistência
-        verificarGato();
+         verificarGato()
       })
       .catch(function (erro) {
         console.log(`#ERRO: ${erro}`);
@@ -525,12 +529,12 @@
 
             const lista_cores = [
               "pink",
-              "brown",
-              "gray",
-              "white",
-              "orange",
-              "purple",
-              "black",
+              "#CD7F32",
+              "#848884",
+              "#FFF8DC",
+              "#F28C28",
+              "#DA70D6",
+              "#413839",
             ];
 
             let cor = 0;
@@ -669,44 +673,48 @@
       let historicoFome = [];
       let historicoSede = [];
 
-function cadastrarStatus() {
-    var idGato = sessionStorage.ID_GATO;
+    function cadastrarStatus() {
+        var idGato = sessionStorage.ID_GATO;
 
-    if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
-        var fomeVar = fome;
-        var sedeVar = sede;
+        if (sessionStorage.EMAIL_USUARIO && sessionStorage.NOME_USUARIO) {
+            var fomeVar = fome;
+            var sedeVar = sede;
 
-        fetch("/gatoStatus/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                fomeGatoServer: fomeVar,
-                sedeGatoServer: sedeVar,
-                gatoIdServer: idGato,
-                donoIdServer: sessionStorage.ID_USUARIO,
-            }),
-        })
-        .then(function (resposta) {
-            if (resposta.ok) {
-                console.log(resposta);
-            } else {
-                throw "Erro ao cadastrar o status!";
-            }
-        })
-        .catch(function (erro) {
-            console.log(`#ERRO: ${erro}`);
-        });
+            fetch("/gatoStatus/cadastrar", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    fomeGatoServer: fomeVar,
+                    sedeGatoServer: sedeVar,
+                    gatoIdServer: idGato,
+                    donoIdServer: sessionStorage.ID_USUARIO,
+                }),
+            })
+            .then(function (resposta) {
+                if (resposta.ok) {
+                    console.log(resposta);
+                } else {
+                    throw "Erro ao cadastrar o status!";
+                }
+            })
+            .catch(function (erro) {
+                console.log(`#ERRO: ${erro}`);
+            });
 
-        return false;
-    } else {
-        return false;
+            return false;
+        } else {
+            return false;
+        }
     }
-}
 
       async function autenticarStatus() {
         try {
+          if (!sessionStorage.ID_GATO || !sessionStorage.ID_USUARIO) {
+            throw new Error("ID do gato ou usuário ausente!");
+          }
+
           const resposta = await fetch("/gatoStatus/autenticar", {
             method: "POST",
             headers: {
@@ -720,15 +728,12 @@ function cadastrarStatus() {
           });
 
           if (!resposta.ok) {
-            throw new Error("Erro ao autenticar o gato!");
-            console.log(resposta);
+            throw new Error("Erro ao autenticar o status do gato!");
           }
 
           const json = await resposta.json();
 
-          console.log(json);
-          console.log(JSON.stringify(json));
-          console.log(Object.keys(json));
+          console.log("Dados autenticados:", json);
 
           sessionStorage.FOME_GATO = json.fome;
           sessionStorage.SEDE_GATO = json.sede;
@@ -737,13 +742,15 @@ function cadastrarStatus() {
 
           historicoFome.push(json.fome);
           historicoSede.push(json.sede);
-          
+
           atualizarStatus();
         } catch (erro) {
-          console.log(erro);
-          console.log("Erro ao autenticar o gato!");
-        } 
+          console.log(`Erro ao autenticar o status: ${erro.message}`);
+        }
       }
+
+
+      var notificacoes = 0;
 
       function atualizarStatus() {
           cadastrarStatus();
@@ -763,6 +770,13 @@ function cadastrarStatus() {
 
           indicador_fome.innerHTML = sessionStorage.FOME_GATO;
           indicador_sede.innerHTML = sessionStorage.SEDE_GATO;
+
+          notificacoes++;
+
+          if (notificacoes > 0) {
+            notificacao.style.display = "flex";
+            notificacao.innerHTML = notificacoes;
+          }
         }
         
 
@@ -771,7 +785,7 @@ function cadastrarStatus() {
           deletar();
           mostrarSelecao();
           cadastrarStatus();
-          // div_gato.style.display = "none";
+          div_gato.style.display = "none";
         }
 
         if (sessionStorage.STATUS_VIDA == 'MORTO') {
@@ -807,6 +821,8 @@ function cadastrarStatus() {
 
       function mostrarDashboard() {
         dashboard.style.display = "flex";
+        notificacoes = 0;
+        notificacao.style.display = "none";
       }
 
       function fecharDashboard() {
@@ -910,9 +926,11 @@ function cadastrarStatus() {
                 data: dados,
                 options: {
                     responsive: true,
+                    maintainAspectRatio: false,
                     elements: {
                         bar: {
                           borderWidth: 2, // Espessura da borda das barras
+                          borderRadius: 10, // Raio das bordas das barras
                           borderColor: '#ffb3c1', // Cor da borda das barras
                           backgroundColor: '#ffb3c1', // Cor de preenchimento das barras (translúcido)
                           shadowColor: '#ffb3c1', // Cor da sombra
@@ -923,7 +941,7 @@ function cadastrarStatus() {
                     },
                     plugins: {
                         tooltip: {
-                            bodyColor: 'rgb(0, 0, 0)', // Cor do texto do corpo do tooltip
+                            bodyColor: '#fff', // Cor do texto do corpo do tooltip
                             titleColor: '#ffb3c1', // Cor do título do tooltip
                             bodyFont: {
                                 family: 'VCR', // Fonte personalizada para o corpo do tooltip
@@ -947,7 +965,7 @@ function cadastrarStatus() {
                             type: 'time', // Eixo X como tempo
                             time: {
                                 unit: 'minute', // Unidade de tempo (ajuste conforme necessário)
-                                tooltipFormat: 'll HH:mm', // Formato do tooltip
+                                tooltipFormat: 'yyyy-MM-dd HH:mm:ss', // Formato do tooltip
                             },
                             title: {
                                 display: true,
@@ -1046,72 +1064,13 @@ function cadastrarStatus() {
             });
         }
 
-
-//       function atualizarDashboard() {
-//     let fome = sessionStorage.FOME_GATO !== undefined ? parseInt(sessionStorage.FOME_GATO) : 100;
-//     let sede = sessionStorage.SEDE_GATO !== undefined ? parseInt(sessionStorage.SEDE_GATO) : 100;
-
-//     // Adicionar os valores de fome e sede aos históricos
-//     historicoFome.push(fome);
-//     historicoSede.push(sede);
-
-//     // Manter o histórico limitado para não sobrecarregar a memória
-//     if (historicoFome.length > 20) historicoFome.shift(); // Limita o histórico a 20 entradas
-//     if (historicoSede.length > 20) historicoSede.shift();
-
-//     const data = {
-//         labels: Array.from({ length: historicoFome.length }, (_, i) => `Entrada ${i + 1}`), // Marcação de entradas
-//         datasets: [{
-//             label: 'Fome',
-//             data: historicoFome, // Dados históricos de Fome
-//             backgroundColor: '#f495a9',
-//             borderColor: '#d87e93',
-//             borderWidth: 1,
-//             fill: false // Não preenche a área abaixo da linha
-//         }, {
-//             label: 'Sede',
-//             data: historicoSede, // Dados históricos de Sede
-//             backgroundColor: '#f8a9b8',
-//             borderColor: '#f1a4bb',
-//             borderWidth: 1,
-//             fill: false // Não preenche a área abaixo da linha
-//         }]
-//     };
-
-//     const ctx = document.getElementById('grafico').getContext('2d');
-
-   
-//     // Cria um novo gráfico com os dados atualizados
-//     window.grafico = new Chart(ctx, {
-//         type: 'line', // Tipo de gráfico em linha
-//         data: data,
-//         options: {
-//             responsive: true,
-//             scales: {
-//                 x: {
-//                     title: {
-//                         display: true,
-//                         text: 'Entradas'
-//                     }
-//                 },
-//                 y: {
-//                     beginAtZero: true,
-//                     title: {
-//                         display: true,
-//                         text: 'Intensidade'
-//                     }
-//                 }
-//             },
-//             animation: {
-//                 duration: 0 // Desativa animações para mudanças rápidas
-//             }
-//         }
-//       });
-// }
-
-// // Chama a função para atualizar o gráfico a cada 1 segundo
-// setInterval(atualizarDashboard, 1000);
-
+        window.onload = function () {
+          listar(); 
+          verificarGato(); 
+          cadastrarStatus(); 
+          autenticarStatus(); 
+          obterDadosGrafico(sessionStorage.ID_GATO); 
+        }
     </script>
   </body>
 </html>
