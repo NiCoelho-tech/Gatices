@@ -728,6 +728,7 @@ header > img {
   flex-direction: column;
   justify-content: center;
   background-color: #7a4f4f;
+  border-radius: inherit;
   z-index: 1;
 }
 
